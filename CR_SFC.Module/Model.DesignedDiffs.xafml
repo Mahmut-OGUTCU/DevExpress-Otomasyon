@@ -1,12 +1,78 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="CR_SFC">
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
   </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Default" Index="1">
+        <Items>
+          <Item Id="Connections_ListView" Index="1">
+            <Items>
+              <Item Id="Machines_ListView" ViewId="Machines_ListView" ObjectKey="" IsNewNode="True">
+                <Items IsNewNode="True">
+                  <Item Id="FastProductions_ListView" ViewId="FastProductions_ListView" ObjectKey="" IsNewNode="True" />
+                  <Item Id="QualityCriterions_ListView" ViewId="QualityCriterions_ListView" ObjectKey="" IsNewNode="True" />
+                  <Item Id="Stances_ListView" ViewId="Stances_ListView" ObjectKey="" IsNewNode="True" />
+                  <Item Id="Warnings_ListView" ViewId="Warnings_ListView" ObjectKey="" IsNewNode="True" />
+                </Items>
+              </Item>
+            </Items>
+          </Item>
+          <Item Id="ProductNames_ListView" Index="2" />
+          <Item Id="DataExplains_ListView" Visible="False" />
+          <Item Id="DataTypes_ListView" Visible="False" />
+          <Item Id="DebugLogs_ListView" Removed="True" />
+          <Item Id="Event_ListView" Visible="False" />
+          <Item Id="FastProductions_ListView" Removed="True" />
+          <Item Id="Machines_ListView" Removed="True" />
+          <Item Id="PLCCurrentDatas_ListView" Visible="False" />
+          <Item Id="PLCLibrarys_ListView" Removed="True" />
+          <Item Id="PLCProductionData_ListView" Visible="False" />
+          <Item Id="PLCQualityCriterionDatas_ListView" Visible="False" />
+          <Item Id="PrinterProductionData_ListView" Visible="False" />
+          <Item Id="PrinterTable_ListView" Visible="False" />
+          <Item Id="QualityCriterions_ListView" Removed="True" />
+          <Item Id="Reports_ListView" Removed="True" />
+          <Item Id="Shifts_ListView" Visible="False" />
+          <Item Id="Stances_ListView" Removed="True" />
+          <Item Id="Tags_ListView" Removed="True" />
+          <Item Id="TextileProductionDatas_ListView" Visible="False" />
+          <Item Id="Warnings_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Standart Setup" Caption="Standart Setup" Index="2" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Tags_ListView" ViewId="Tags_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="PLCLibrarys_ListView" ViewId="PLCLibrarys_ListView" ObjectKey="" Index="2" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="System" Caption="System" Index="2" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="DebugLogs_ListView" ViewId="DebugLogs_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Report" Caption="Report" Index="3" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Reports_ListView" ViewId="Reports_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="KPI" Visible="False" />
+      <Item Id="Reports" Visible="False" />
+      <Item Id="State Machine" Visible="False" />
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="22.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="22.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="22.1.4.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <ListView Id="Connections_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <ListView Id="Machines_ListView" MasterDetailMode="ListViewAndDetailView" />
   </Views>
 </Application>
