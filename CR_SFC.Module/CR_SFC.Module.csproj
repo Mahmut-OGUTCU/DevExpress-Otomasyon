@@ -191,9 +191,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Connections.cs" />
+    <Compile Include="BusinessObjects\DataExplains.cs" />
+    <Compile Include="BusinessObjects\DataTypes.cs" />
+    <Compile Include="BusinessObjects\DebugLogs.cs" />
+    <Compile Include="BusinessObjects\FastProductions.cs" />
+    <Compile Include="BusinessObjects\Machines.cs" />
+    <Compile Include="BusinessObjects\PLCCurrentDatas.cs" />
+    <Compile Include="BusinessObjects\PLCLibrarys.cs" />
+    <Compile Include="BusinessObjects\PLCProductionData.cs" />
+    <Compile Include="BusinessObjects\PLCQualityCriterionDatas.cs" />
+    <Compile Include="BusinessObjects\PrinterProductionData.cs" />
+    <Compile Include="BusinessObjects\PrinterTable.cs" />
+    <Compile Include="BusinessObjects\ProductNames.cs" />
+    <Compile Include="BusinessObjects\QualityCriterions.cs" />
+    <Compile Include="BusinessObjects\Reports.cs" />
+    <Compile Include="BusinessObjects\Shifts.cs" />
+    <Compile Include="BusinessObjects\Stances.cs" />
+    <Compile Include="BusinessObjects\Tags.cs" />
+    <Compile Include="BusinessObjects\TextileProductionDatas.cs" />
+    <Compile Include="BusinessObjects\Warnings.cs" />
+    <Compile Include="Controllers\FastProductionCount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\FastProductionCount.Designer.cs">
+      <DependentUpon>FastProductionCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HideListViewOnDetailView.cs" />
+    <Compile Include="Controllers\HideListViewOnDetailView.Designer.cs">
+      <DependentUpon>HideListViewOnDetailView.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="BusinessObjects\ApplicationUser.cs" />
     <Compile Include="BusinessObjects\ApplicationUserLoginInfo.cs" />
+    <Compile Include="EnumObjects\ProductionTypes.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -204,10 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BusinessObjects\ReadMe.txt" />
-    <None Include="Controllers\ReadMe.txt" />
     <None Include="DatabaseUpdate\ReadMe.txt" />
     <None Include="Images\ReadMe.txt" />
     <None Include="ReadMe.txt" />
@@ -224,4 +254,3 @@
   </Target>
   -->
 </Project>
-
