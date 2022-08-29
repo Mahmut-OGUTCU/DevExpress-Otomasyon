@@ -211,11 +211,11 @@
     <Compile Include="BusinessObjects\Tags.cs" />
     <Compile Include="BusinessObjects\TextileProductionDatas.cs" />
     <Compile Include="BusinessObjects\Warnings.cs" />
-    <Compile Include="Controllers\FastProductionCount.cs">
+    <Compile Include="Controllers\FastProductionController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controllers\FastProductionCount.Designer.cs">
-      <DependentUpon>FastProductionCount.cs</DependentUpon>
+    <Compile Include="Controllers\FastProductionController.Designer.cs">
+      <DependentUpon>FastProductionController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HideListViewOnDetailView.cs" />
     <Compile Include="Controllers\HideListViewOnDetailView.Designer.cs">

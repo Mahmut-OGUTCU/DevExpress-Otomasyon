@@ -1,7 +1,7 @@
 ﻿
 namespace CR_SFC.Module.Controllers
 {
-    partial class FastProductionCount
+    partial class FastProductionController
     {
         /// <summary>
         /// Required designer variable.
