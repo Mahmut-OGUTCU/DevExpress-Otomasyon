@@ -113,6 +113,7 @@
     <Reference Include="DevExpress.ExpressApp.ViewVariantsModule.v22.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.ExpressApp.Web.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Xpo.v22.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -140,6 +141,7 @@
     <Reference Include="DevExpress.Spreadsheet.v22.1.Core">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.Web.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v22.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -211,6 +213,10 @@
     <Compile Include="BusinessObjects\Tags.cs" />
     <Compile Include="BusinessObjects\TextileProductionDatas.cs" />
     <Compile Include="BusinessObjects\Warnings.cs" />
+    <Compile Include="Controllers\ConnectionController.cs" />
+    <Compile Include="Controllers\ConnectionController.Designer.cs">
+      <DependentUpon>ConnectionController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\FastProductionController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -224,6 +230,8 @@
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="BusinessObjects\ApplicationUser.cs" />
     <Compile Include="BusinessObjects\ApplicationUserLoginInfo.cs" />
+    <Compile Include="EnumObjects\PLCTypes.cs" />
+    <Compile Include="EnumObjects\ProtocolTypes.cs" />
     <Compile Include="EnumObjects\ProductionTypes.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>

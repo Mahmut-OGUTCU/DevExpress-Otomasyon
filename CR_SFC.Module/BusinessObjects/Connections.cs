@@ -1,5 +1,6 @@
 ﻿using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
@@ -15,6 +16,9 @@ using System.Text;
 namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
+    [Appearance("DeviceNameEnable", TargetItems = "DeviceName", Enabled = false)]
+    [Appearance("PLCTypeEnable", TargetItems = "PLCType", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
+    [Appearance("FillPLCType", TargetItems = "PLCType", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
     public class Connections : XPBaseObject
     {
         public Connections(Session session) : base(session)
@@ -71,7 +75,7 @@ namespace CR_SFC.Module.BusinessObjects
 
         // NOTE: DB'de yok
         ProductNames _ProductOID;
-        [XafDisplayName("Product Name")]
+        [XafDisplayName("Product Name"), ImmediatePostData]
         public ProductNames ProductOID
         {
             get => _ProductOID;
@@ -119,7 +123,7 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(CommunicationAddress), ref communicationAddress, value);
         }
 
-        string deviceName;
+        string deviceName; //ProductNames.ProtocolName
         [Size(50)]
         public string DeviceName
         {
@@ -127,12 +131,13 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(DeviceName), ref deviceName, value);
         }
 
-        string pLCType;
+        // TODO: PLCType enum
+        string _PLCType;
         [Size(50)]
         public string PLCType
         {
-            get => pLCType;
-            set => SetPropertyValue(nameof(PLCType), ref pLCType, value);
+            get => _PLCType;
+            set => SetPropertyValue(nameof(PLCType), ref _PLCType, value);
         }
 
         string topic;
@@ -169,7 +174,6 @@ namespace CR_SFC.Module.BusinessObjects
             base.OnSaving();
             if (ProductOID != null)
                 productName = ProductOID.ProductName;
-
         }
     }
 }
