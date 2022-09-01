@@ -21,17 +21,17 @@ namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
     #region Appearance Product Type 0
-    [Appearance("ShowOnProductType0", TargetItems = "MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition", Criteria = "ProductType = 0", Context = "Any", Visibility = ViewItemVisibility.Show)]
-    [Appearance("HideOnProductType0", TargetItems = "MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition", Criteria = "ProductType != 0", Context = "Any", Visibility = ViewItemVisibility.Hide)]
+    [Appearance("ShowOnProductType0", TargetItems = "EtorCheck, MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition", Criteria = "ProductType = 0", Context = "Any", Visibility = ViewItemVisibility.Show)]
+    [Appearance("HideOnProductType0", TargetItems = "EtorCheck, MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition", Criteria = "ProductType != 0", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType0", TargetItems =
-        "ProductionGain, ProductionSet, CurrentProductionAddress, EtorCheck, ConnectCheckAdd",
+        "ProductionGain, ProductionSet, CurrentProductionAddress, ConnectCheckAdd",
         Criteria = "ProductType = 0", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 1
     [Appearance("ShowOnProductType1", TargetItems = "StartValue, EndValue, ProductionAddress", Criteria = "ProductType = 1", Context = "Any", Visibility = ViewItemVisibility.Show)]
     [Appearance("HideOnProductType1", TargetItems = "StartValue, EndValue, ProductionAddress", Criteria = "ProductType != 1", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType1", TargetItems =
-        "ProductionGain, ProductionSet, CurrentProductionAddress, EtorCheck, ConnectCheckAdd",
+        "ProductionGain, ProductionSet, CurrentProductionAddress, ConnectCheckAdd",
         Criteria = "ProductType = 1", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 2
@@ -42,7 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
     "Type2ProductionGroupNumber, Type2ProductionGroupNumberAdd, Type2FilterTime, Type2FilterAdress, FastProduction",
     Criteria = "ProductType != 2", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType2", TargetItems =
-        "ProductionGain, ProductionSet, CurrentProductionAddress, EtorCheck, ConnectCheckAdd",
+        "ProductionGain, ProductionSet, CurrentProductionAddress, ConnectCheckAdd",
         Criteria = "ProductType = 2", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 3
@@ -53,7 +53,7 @@ namespace CR_SFC.Module.BusinessObjects
         "CurrentDatasWriteControl, ProductionStartType, ProductionValue, SecondQualityProductionAddress, ProductionStartAddress, StartValueType4, StopValueType4, SavedCurrentDatas",
         Criteria = "ProductType != 3", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType3", TargetItems =
-        "EtorCheck, ConnectCheckAdd",
+        "ConnectCheckAdd",
         Criteria = "ProductType = 3", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 4
@@ -64,7 +64,7 @@ namespace CR_SFC.Module.BusinessObjects
         "ProductionValue, ActiveProductType5, ResetAddQuality60sType5, ResetAddCurrentValueType5, ResetAddQualityTotalValueType5, ResetAddRollFinishValueType5",
         Criteria = "ProductType != 4", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType4", TargetItems =
-        "EtorCheck, ConnectCheckAdd",
+        "ConnectCheckAdd",
         Criteria = "ProductType = 4", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 5
@@ -75,7 +75,7 @@ namespace CR_SFC.Module.BusinessObjects
         "CurrentMetersTag, HexCMAdressControl, HexCMByteControl, TotalMetersTag, HexTMAdressControl, HexTMByteControl, TotalFirstIndex, TotalSecondIndex, CurrentFirstIndex, CurrentSecondIndex",
         Criteria = "ProductType != 5", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType5", TargetItems =
-        "ProductionGain, CurrentProductionAddress, EtorCheck, ConnectCheckAdd",
+        "ProductionGain, CurrentProductionAddress, ConnectCheckAdd",
         Criteria = "ProductType = 5", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     public class Machines : XPBaseObject
