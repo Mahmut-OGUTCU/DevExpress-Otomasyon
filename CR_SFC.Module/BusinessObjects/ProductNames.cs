@@ -27,7 +27,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int oid;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInListView(false), VisibleInDetailView(false)]
         public int OID
         {
             get => oid;
@@ -35,6 +35,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productName;
+        [XafDisplayName("Product Name")]
         public string ProductName
         {
             get => productName;
@@ -58,6 +59,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string sectionName;
+        [XafDisplayName("Section Name")]
         public string SectionName
         {
             get => sectionName;
@@ -87,10 +89,8 @@ namespace CR_SFC.Module.BusinessObjects
             if (_PanoID != null)
                 panoName = _PanoID.PanoName;
 
-            if (_ProtocolID == 0)
+            if (ProtocolID == 0)
                 throw new UserFriendlyException("Protokol Seçiniz.");
-
-            var aa = _ProtocolID;
 
             if (_ProtocolID != 0)
                 ProtocolName = ProtocolID.ToString();

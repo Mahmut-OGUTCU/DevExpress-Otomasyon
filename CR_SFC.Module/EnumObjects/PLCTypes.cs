@@ -8,12 +8,13 @@ namespace CR_SFC.Module.EnumObjects
 {
     public enum PLCType
     {
-        S71200 = 0,
-        S71500 = 1,
-        S7200 = 2,
-        S7200Smart = 3,
-        S7300 = 4,
-        S7400 = 5,
-        Logo0BAB = 6,
+        Seçiniz = 0,
+        S71200 = 1,
+        S71500 = 2,
+        S7200 = 3,
+        S7200Smart = 4,
+        S7300 = 5,
+        S7400 = 6,
+        Logo0BAB = 7,
     }
 }

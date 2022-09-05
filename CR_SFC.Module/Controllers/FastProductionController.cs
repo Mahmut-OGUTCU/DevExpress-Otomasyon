@@ -57,6 +57,8 @@ namespace CR_SFC.Module.Controllers
                     var machineFastProductions = machine.FastProduction;
                     if (machineFastProductions.Count() > 4 && savingordeleting)
                         throw new UserFriendlyException("Bir makineye 4 adetten fazla fast production ekleyemezsiniz.");
+
+                    // TODO: Objectdeleting yap
                     if (machineFastProductions.Count() != fastProduction.ProductionIndex && !savingordeleting)
                         throw new UserFriendlyException("En son ProductionIndex kaydını siliniz.");
 

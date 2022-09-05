@@ -78,6 +78,8 @@ namespace CR_SFC.Module.BusinessObjects
         "ProductionGain, CurrentProductionAddress, ConnectCheckAdd",
         Criteria = "ProductType = 5", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
+    [Appearance("test1", TargetItems = "EtorCheck", Criteria = "ConnectionsDeviceName = 'MODBUS'", Context = "Any", Enabled = true)]
+    [Appearance("test2", TargetItems = "EtorCheck", Criteria = "ConnectionsDeviceName != 'MODBUS'", Context = "Any", Enabled = false)]
     public class Machines : XPBaseObject
     {
         public Machines(Session session) : base(session)
@@ -105,7 +107,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Connections _ConnectionID;
-        [Association("Connections-Machines")]
+        [Association("Connections-Machines"), ImmediatePostData]
         public Connections ConnectionID
         {
             get => _ConnectionID;
@@ -113,6 +115,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int productionStartType;
+        [VisibleInListView(false)]
         public int ProductionStartType
         {
             get => productionStartType;
@@ -120,6 +123,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int savedCurrentDatas;
+        [VisibleInListView(false)]
         public int SavedCurrentDatas
         {
             get => savedCurrentDatas;
@@ -127,6 +131,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int startValueType4;
+        [VisibleInListView(false)]
         public int StartValueType4
         {
             get => startValueType4;
@@ -134,6 +139,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int stopValueType4;
+        [VisibleInListView(false)]
         public int StopValueType4
         {
             get => stopValueType4;
@@ -141,6 +147,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int cycleTime;
+        [VisibleInListView(false)]
         public int CycleTime
         {
             get => cycleTime;
@@ -148,7 +155,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         ProductionType productType;
-        [ImmediatePostData]
+        [ImmediatePostData, VisibleInListView(false)]
         public ProductionType ProductType
         {
             get => productType;
@@ -156,6 +163,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int startValue;
+        [VisibleInListView(false)]
         public int StartValue
         {
             get => startValue;
@@ -163,6 +171,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int endValue;
+        [VisibleInListView(false)]
         public int EndValue
         {
             get => endValue;
@@ -170,6 +179,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int slaveAddress;
+        [VisibleInListView(false)]
         public int SlaveAddress
         {
             get => slaveAddress;
@@ -177,6 +187,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int transactionBatch;
+        [VisibleInListView(false)]
         public int TransactionBatch
         {
             get => transactionBatch;
@@ -184,6 +195,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int type2ProductionGroupNumber;
+        [VisibleInListView(false)]
         public int Type2ProductionGroupNumber
         {
             get => type2ProductionGroupNumber;
@@ -191,6 +203,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int type2FilterTime;
+        [VisibleInListView(false)]
         public int Type2FilterTime
         {
             get => type2FilterTime;
@@ -198,6 +211,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int operationTime;
+        [VisibleInListView(false)]
         public int OperationTime
         {
             get => operationTime;
@@ -205,6 +219,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool currentDatasWriteControl;
+        [VisibleInListView(false)]
         public bool CurrentDatasWriteControl
         {
             get => currentDatasWriteControl;
@@ -212,6 +227,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool cycleTimeControl;
+        [VisibleInListView(false)]
         public bool CycleTimeControl
         {
             get => cycleTimeControl;
@@ -219,13 +235,23 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool machineWorkCondition;
+        [VisibleInListView(false)]
         public bool MachineWorkCondition
         {
             get => machineWorkCondition;
             set => SetPropertyValue(nameof(MachineWorkCondition), ref machineWorkCondition, value);
         }
 
-        bool etorCheck;
+        string _ConnectionsDeviceName;
+        [NonPersistent, VisibleInListView(false)]
+        private string ConnectionsDeviceName
+        {
+            get => ConnectionID?.DeviceName;
+            set => _ConnectionsDeviceName = value;
+        }
+
+        bool etorCheck; // ConnectionsDeviceName, MODBUS ise tıklanabilir olacak
+        [VisibleInListView(false)]
         public bool EtorCheck
         {
             get => etorCheck;
@@ -233,6 +259,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool hexCMAdressControl;
+        [VisibleInListView(false)]
         public bool HexCMAdressControl
         {
             get => hexCMAdressControl;
@@ -240,6 +267,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool hexTMAdressControl;
+        [VisibleInListView(false)]
         public bool HexTMAdressControl
         {
             get => hexTMAdressControl;
@@ -247,6 +275,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool hexCMByteControl;
+        [VisibleInListView(false)]
         public bool HexCMByteControl
         {
             get => hexCMByteControl;
@@ -254,6 +283,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool hexTMByteControl;
+        [VisibleInListView(false)]
         public bool HexTMByteControl
         {
             get => hexTMByteControl;
@@ -261,6 +291,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool connectCheck;
+        [VisibleInListView(false)]
         public bool ConnectCheck
         {
             get => connectCheck;
@@ -268,7 +299,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string module;
-        [Size(20)]
+        [Size(20), VisibleInListView(false)]
         public string Module
         {
             get => module;
@@ -276,7 +307,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionAddress;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ProductionAddress
         {
             get => productionAddress;
@@ -284,7 +315,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionValue;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ProductionValue
         {
             get => productionValue;
@@ -292,7 +323,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string currentProductionAddress;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string CurrentProductionAddress
         {
             get => currentProductionAddress;
@@ -300,7 +331,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionSet;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ProductionSet
         {
             get => productionSet;
@@ -308,7 +339,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionGain;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ProductionGain
         {
             get => productionGain;
@@ -316,7 +347,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string secondQualityProductionAddress;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string SecondQualityProductionAddress
         {
             get => secondQualityProductionAddress;
@@ -324,7 +355,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionStartAddress;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ProductionStartAddress
         {
             get => productionStartAddress;
@@ -332,7 +363,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string activeProductType5;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ActiveProductType5
         {
             get => activeProductType5;
@@ -340,7 +371,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddQuality60sType5;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ResetAddQuality60sType5
         {
             get => resetAddQuality60sType5;
@@ -348,7 +379,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddCurrentValueType5;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ResetAddCurrentValueType5
         {
             get => resetAddCurrentValueType5;
@@ -356,7 +387,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddQualityTotalValueType5;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ResetAddQualityTotalValueType5
         {
             get => resetAddQualityTotalValueType5;
@@ -364,7 +395,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddRollFinishValueType5;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ResetAddRollFinishValueType5
         {
             get => resetAddRollFinishValueType5;
@@ -372,7 +403,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string currentMetersTag;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string CurrentMetersTag
         {
             get => currentMetersTag;
@@ -380,7 +411,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string totalMetersTag;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string TotalMetersTag
         {
             get => totalMetersTag;
@@ -388,7 +419,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string currentFirstIndex;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string CurrentFirstIndex
         {
             get => currentFirstIndex;
@@ -396,7 +427,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string currentSecondIndex;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string CurrentSecondIndex
         {
             get => currentSecondIndex;
@@ -404,7 +435,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string totalFirstIndex;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string TotalFirstIndex
         {
             get => totalFirstIndex;
@@ -412,7 +443,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string totalSecondIndex;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string TotalSecondIndex
         {
             get => totalSecondIndex;
@@ -420,7 +451,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string connectCheckAdd;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ConnectCheckAdd
         {
             get => connectCheckAdd;
@@ -428,7 +459,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string mqttTopicName;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string MqttTopicName
         {
             get => mqttTopicName;
@@ -436,7 +467,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string type2ProductionGroupNumberAdd;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string Type2ProductionGroupNumberAdd
         {
             get => type2ProductionGroupNumberAdd;
@@ -444,7 +475,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string type2FilterAdress;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string Type2FilterAdress
         {
             get => type2FilterAdress;

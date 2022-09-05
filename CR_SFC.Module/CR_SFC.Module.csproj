@@ -227,10 +227,15 @@
     <Compile Include="Controllers\HideListViewOnDetailView.Designer.cs">
       <DependentUpon>HideListViewOnDetailView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\MachineController.cs" />
+    <Compile Include="Controllers\MachineController.Designer.cs">
+      <DependentUpon>MachineController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="BusinessObjects\ApplicationUser.cs" />
     <Compile Include="BusinessObjects\ApplicationUserLoginInfo.cs" />
     <Compile Include="EnumObjects\PLCTypes.cs" />
+    <Compile Include="EnumObjects\DataTypes.cs" />
     <Compile Include="EnumObjects\ProtocolTypes.cs" />
     <Compile Include="EnumObjects\ProductionTypes.cs" />
     <Compile Include="Module.cs">

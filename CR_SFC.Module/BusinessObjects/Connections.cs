@@ -1,4 +1,5 @@
-﻿using DevExpress.Data.Filtering;
+﻿using CR_SFC.Module.EnumObjects;
+using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.DC;
@@ -17,8 +18,8 @@ namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
     [Appearance("DeviceNameEnable", TargetItems = "DeviceName", Enabled = false)]
-    [Appearance("PLCTypeEnable", TargetItems = "PLCType", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
-    [Appearance("FillPLCType", TargetItems = "PLCType", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
+    [Appearance("PLCTypeEnable", TargetItems = "PLCTypeID", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
+    [Appearance("FillPLCType", TargetItems = "PLCTypeID", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
     public class Connections : XPBaseObject
     {
         public Connections(Session session) : base(session)
@@ -30,7 +31,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int id;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int ID
         {
             get => id;
@@ -38,6 +39,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int machineNumber;
+        [XafDisplayName("Machine Number"), VisibleInListView(false)]
         public int MachineNumber
         {
             get => machineNumber;
@@ -45,6 +47,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int inputNumber;
+        [XafDisplayName("Input Number"), VisibleInListView(false)]
         public int InputNumber
         {
             get => inputNumber;
@@ -52,7 +55,8 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int threadSleepTime;
-        [RuleRequiredField("threadSleepTime-Required", DefaultContexts.Save, "Lütfen Thread Sleep Time Alanını Doldurunuz")]
+        [RuleRequiredField("threadSleepTime-Required", DefaultContexts.Save, "Lütfen Thread Sleep Time Alanını Doldurunuz"), 
+            XafDisplayName("Thread Sleep Time (ms)"), VisibleInListView(false)]
         public int ThreadSleepTime
         {
             get => threadSleepTime;
@@ -60,6 +64,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int rack;
+        [VisibleInListView(false)]
         public int Rack
         {
             get => rack;
@@ -67,15 +72,15 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int slot;
+        [VisibleInListView(false)]
         public int Slot
         {
             get => slot;
             set => SetPropertyValue(nameof(Slot), ref slot, value);
         }
 
-        // NOTE: DB'de yok
         ProductNames _ProductOID;
-        [XafDisplayName("Product Name"), ImmediatePostData]
+        [XafDisplayName("Product Name"), ImmediatePostData, VisibleInListView(false)]
         public ProductNames ProductOID
         {
             get => _ProductOID;
@@ -91,7 +96,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productCode;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string ProductCode
         {
             get => productCode;
@@ -99,7 +104,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string ipAddress;
-        [Size(15)]
+        [Size(15), VisibleInListView(false)]
         [RuleRequiredField("ipAddress-Required", DefaultContexts.Save, "Lütfen Ip Address Alanını Doldurunuz")]
         public string IpAddress
         {
@@ -108,7 +113,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string terminalType;
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string TerminalType
         {
             get => terminalType;
@@ -116,7 +121,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string communicationAddress;
-        [Size(20)]
+        [Size(20), VisibleInListView(false)]
         public string CommunicationAddress
         {
             get => communicationAddress;
@@ -124,16 +129,23 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string deviceName; //ProductNames.ProtocolName
-        [Size(50)]
+        [Size(50), VisibleInListView(false)]
         public string DeviceName
         {
             get => deviceName;
             set => SetPropertyValue(nameof(DeviceName), ref deviceName, value);
         }
 
-        // TODO: PLCType enum
+        PLCType _PLCTypeID;
+        [Size(50), VisibleInListView(false), XafDisplayName("PLC Type"), ImmediatePostData]
+        public PLCType PLCTypeID
+        {
+            get => _PLCTypeID;
+            set => SetPropertyValue(nameof(PLCTypeID), ref _PLCTypeID, value);
+        }
+
         string _PLCType;
-        [Size(50)]
+        [Size(50), VisibleInDetailView(false), VisibleInListView(false)]
         public string PLCType
         {
             get => _PLCType;
@@ -141,7 +153,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string topic;
-        [Size(70)]
+        [Size(70), VisibleInListView(false)]
         public string Topic
         {
             get => topic;
@@ -149,7 +161,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string port;
-        [Size(10)]
+        [Size(10), VisibleInListView(false)]
         public string Port
         {
             get => port;
@@ -157,6 +169,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime serviceCheck;
+        [VisibleInListView(false)]
         public DateTime ServiceCheck
         {
             get => serviceCheck;
@@ -173,7 +186,14 @@ namespace CR_SFC.Module.BusinessObjects
         {
             base.OnSaving();
             if (ProductOID != null)
+            {
                 productName = ProductOID.ProductName;
+            }
+
+            if (PLCTypeID != null)
+            {
+                PLCType = PLCTypeID.ToString();
+            }
         }
     }
 }

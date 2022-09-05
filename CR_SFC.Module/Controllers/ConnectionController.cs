@@ -41,8 +41,18 @@ namespace CR_SFC.Module.Controllers
 
         private void ObjectSpace_ObjectChanged(object sender, ObjectChangedEventArgs e)
         {
-            if (e.PropertyName == "ProductOID")
+            //
+            if (e.PropertyName == "ProductOID" && e.NewValue != null)
                 ((Connections)View.CurrentObject).DeviceName = ((Connections)View.CurrentObject).ProductOID.ProtocolName;
+
+            //
+            if (((Connections)View.CurrentObject).DeviceName.ToString() != "SIEMENS")
+                ((Connections)View.CurrentObject).PLCTypeID = 0;
+
+            //
+            if ((e.PropertyName == "ProductOID" && e.NewValue == null))
+                ((Connections)View.CurrentObject).DeviceName = "Seçiniz";
+
         }
     }
 }
