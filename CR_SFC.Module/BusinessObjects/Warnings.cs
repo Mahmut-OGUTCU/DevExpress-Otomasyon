@@ -33,23 +33,17 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ID), ref id, value);
         }
 
-        //Machines machineID;
-        //public Machines MachineID
-        //{
-        //    get => machineID;
-        //    set => SetPropertyValue(nameof(MachineID), ref machineID, value);
-        //}
-
         int currentValue;
+        [VisibleInListView(false)]
         public int CurrentValue
         {
             get => currentValue;
             set => SetPropertyValue(nameof(CurrentValue), ref currentValue, value);
         }
 
-        string address;
+        Tags address;
         [Size(20)]
-        public string Address
+        public Tags Address
         {
             get => address;
             set => SetPropertyValue(nameof(Address), ref address, value);

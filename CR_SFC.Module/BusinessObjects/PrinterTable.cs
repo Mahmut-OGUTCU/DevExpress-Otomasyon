@@ -33,14 +33,6 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(OID), ref oid, value);
         }
 
-        // NOTE: DB'de yok
-        Machines machineID;
-        public Machines MachineID
-        {
-            get => machineID;
-            set => SetPropertyValue(nameof(MachineID), ref machineID, value);
-        }
-
         string printerName;
         [Size(50)]
         public string PrinterName
@@ -81,8 +73,8 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(Building4IpAddress), ref building4IpAddress, value);
         }
 
-        string machineName;
-        public string MachineName
+        Machines machineName;
+        public Machines MachineName
         {
             get => machineName;
             set => SetPropertyValue(nameof(MachineName), ref machineName, value);

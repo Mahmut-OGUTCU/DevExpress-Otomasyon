@@ -33,14 +33,6 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(OID), ref oid, value);
         }
 
-        // NOTE: DB'de yok
-        Machines machineID;
-        public Machines MachineID
-        {
-            get => machineID;
-            set => SetPropertyValue(nameof(MachineID), ref machineID, value);
-        }
-
         string code;
         public string Code
         {
@@ -48,8 +40,8 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(Code), ref code, value);
         }
 
-        string machine;
-        public string Machine
+        Machines machine;
+        public Machines Machine
         {
             get => machine;
             set => SetPropertyValue(nameof(Machine), ref machine, value);
@@ -62,7 +54,6 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(EmployeeCode), ref employeeCode, value);
         }
 
-        // little desc. for not null  => https://supportcenter.devexpress.com/ticket/details/t115053/missing-not-null-attribute-for-xpo-properties
         DateTime startTime;
         [RuleRequiredField("startTime1-Required", DefaultContexts.Save, "Lütfen Start Time Alanını Doldurunuz")]
         public DateTime StartTime

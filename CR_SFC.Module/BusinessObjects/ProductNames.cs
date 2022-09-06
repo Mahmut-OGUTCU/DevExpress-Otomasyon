@@ -42,17 +42,8 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ProductName), ref productName, value);
         }
 
-        PLCLibrarys _PanoID;
-        [XafDisplayName("Pano Name"), VisibleInListView(false)]
-        public PLCLibrarys PanotID
-        {
-            get => _PanoID;
-            set => SetPropertyValue(nameof(PanotID), ref _PanoID, value);
-        }
-
-        string panoName;
-        [VisibleInDetailView(false)]
-        public string PanoName
+        PLCLibrarys panoName;
+        public PLCLibrarys PanoName
         {
             get => panoName;
             set => SetPropertyValue(nameof(PanoName), ref panoName, value);
@@ -66,34 +57,11 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(SectionName), ref sectionName, value);
         }
 
-        ProtocolType _ProtocolID;
-        [XafDisplayName("Protocol Name"), VisibleInListView(false)]
-        public ProtocolType ProtocolID
-        {
-            get => _ProtocolID;
-            set => SetPropertyValue(nameof(ProtocolID), ref _ProtocolID, value);
-        }
-
-        string protocolName;
-        [VisibleInDetailView(false)]
-        public string ProtocolName
+        ProtocolType protocolName;
+        public ProtocolType ProtocolName
         {
             get => protocolName;
             set => SetPropertyValue(nameof(ProtocolName), ref protocolName, value);
-        }
-
-        protected override void OnSaving()
-        {
-            base.OnSaving();
-
-            if (_PanoID != null)
-                panoName = _PanoID.PanoName;
-
-            if (ProtocolID == 0)
-                throw new UserFriendlyException("Protokol Seçiniz.");
-
-            if (_ProtocolID != 0)
-                ProtocolName = ProtocolID.ToString();
         }
     }
 }

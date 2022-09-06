@@ -34,8 +34,11 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ID), ref id, value);
         }
 
-        int dataLenght;
-        public int DataLenght
+        // NOTE: int olan bu alanı select olabilmesi için string yaptım. duruma göre değiştirilir.
+        string dataLenght;
+        [XafDisplayName("Lenght")]
+        [ModelDefault("PredefinedValues", "1;8;16;32;64")]
+        public string DataLenght
         {
             get => dataLenght;
             set => SetPropertyValue(nameof(DataLenght), ref dataLenght, value);
@@ -58,7 +61,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string dataType;
-        [Size(10)]
+        [Size(10), XafDisplayName("Type"), ModelDefault("PredefinedValues", "Bit;Byte;Integer;UInteger;Float")]
         public string DataType
         {
             get => dataType;
@@ -66,7 +69,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string registerOrder;
-        [Size(10)]
+        [Size(10), ModelDefault("PredefinedValues", "LowHigh;HighLow")]
         public string RegisterOrder
         {
             get => registerOrder;
@@ -74,7 +77,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string input;
-        [Size(50)]
+        [Size(50), VisibleInDetailView(false), VisibleInListView(false)]
         public string Input
         {
             get => input;

@@ -30,11 +30,21 @@ namespace CR_SFC.Module.Controllers
         protected override void OnActivated()
         {
             base.OnActivated();
+            ObjectSpace.ObjectChanged += ObjectSpace_ObjectChanged;
         }
 
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
+            ObjectSpace.ObjectChanged -= ObjectSpace_ObjectChanged;
+        }
+
+        private void ObjectSpace_ObjectChanged(object sender, ObjectChangedEventArgs e)
+        {
+
+            if ((e.PropertyName == "ConnectionID" && ((Connections)e.NewValue)?.DeviceName != "MODBUS") && ((Machines)View.CurrentObject).EtorCheck)
+                ((Machines)View.CurrentObject).EtorCheck = false;
         }
     }
 }
+    

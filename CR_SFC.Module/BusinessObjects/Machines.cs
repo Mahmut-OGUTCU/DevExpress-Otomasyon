@@ -21,17 +21,17 @@ namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
     #region Appearance Product Type 0
-    [Appearance("ShowOnProductType0", TargetItems = "EtorCheck, MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition", Criteria = "ProductType = 0", Context = "Any", Visibility = ViewItemVisibility.Show)]
-    [Appearance("HideOnProductType0", TargetItems = "EtorCheck, MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition", Criteria = "ProductType != 0", Context = "Any", Visibility = ViewItemVisibility.Hide)]
+    [Appearance("ShowOnProductType0", TargetItems = "EtorCheck, MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition, ConnectCheckAddID", Criteria = "ProductType = 0", Context = "Any", Visibility = ViewItemVisibility.Show)]
+    [Appearance("HideOnProductType0", TargetItems = "EtorCheck, MqttTopicName, CycleTimeControl, ConnectCheck, Module, OperationTime, CycleTime, SlaveAddress, TransactionBatch, MachineWorkCondition, ConnectCheckAddID", Criteria = "ProductType != 0", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType0", TargetItems =
-        "ProductionGain, ProductionSet, CurrentProductionAddress, ConnectCheckAdd",
+        "ProductionGain, ProductionSet, CurrentProductionAddress, ProductionValue",
         Criteria = "ProductType = 0", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 1
     [Appearance("ShowOnProductType1", TargetItems = "StartValue, EndValue, ProductionAddress", Criteria = "ProductType = 1", Context = "Any", Visibility = ViewItemVisibility.Show)]
     [Appearance("HideOnProductType1", TargetItems = "StartValue, EndValue, ProductionAddress", Criteria = "ProductType != 1", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType1", TargetItems =
-        "ProductionGain, ProductionSet, CurrentProductionAddress, ConnectCheckAdd",
+        "ProductionGain, ProductionSet, CurrentProductionAddress, ProductionValue",
         Criteria = "ProductType = 1", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 2
@@ -42,30 +42,26 @@ namespace CR_SFC.Module.BusinessObjects
     "Type2ProductionGroupNumber, Type2ProductionGroupNumberAdd, Type2FilterTime, Type2FilterAdress, FastProduction",
     Criteria = "ProductType != 2", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType2", TargetItems =
-        "ProductionGain, ProductionSet, CurrentProductionAddress, ConnectCheckAdd",
+        "ProductionGain, ProductionSet, CurrentProductionAddress, ProductionValue",
         Criteria = "ProductType = 2", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 3
     [Appearance("ShowOnProductType3", TargetItems =
-        "CurrentDatasWriteControl, ProductionGain, ProductionSet, CurrentProductionAddress, ProductionStartType, ProductionValue, SecondQualityProductionAddress, ProductionStartAddress, StartValueType4, StopValueType4, SavedCurrentDatas",
+        "ProductionValue, CurrentDatasWriteControl, ProductionGain, ProductionSet, CurrentProductionAddress, ProductionStartType, " +
+        "SecondQualityProductionAddress, ProductionStartAddress, StartValueType4, StopValueType4, SavedCurrentDatas",
         Criteria = "ProductType = 3", Context = "Any", Visibility = ViewItemVisibility.Show)]
     [Appearance("HideOnProductType3", TargetItems =
-        "CurrentDatasWriteControl, ProductionStartType, ProductionValue, SecondQualityProductionAddress, ProductionStartAddress, StartValueType4, StopValueType4, SavedCurrentDatas",
+        "CurrentDatasWriteControl, ProductionStartType, SecondQualityProductionAddress, ProductionStartAddress, StartValueType4, StopValueType4, SavedCurrentDatas",
         Criteria = "ProductType != 3", Context = "Any", Visibility = ViewItemVisibility.Hide)]
-    [Appearance("HideOffProductType3", TargetItems =
-        "ConnectCheckAdd",
-        Criteria = "ProductType = 3", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 4
     [Appearance("ShowOnProductType4", TargetItems =
-        "CurrentProductionAddress, ProductionValue, ProductionGain, ProductionSet, ActiveProductType5, ResetAddQuality60sType5, ResetAddCurrentValueType5, ResetAddQualityTotalValueType5, ResetAddRollFinishValueType5",
+        "ProductionValue, CurrentProductionAddress, ProductionGain, ProductionSet, ActiveProductType5, ResetAddQuality60sType5, " +
+        "ResetAddCurrentValueType5, ResetAddQualityTotalValueType5, ResetAddRollFinishValueType5",
         Criteria = "ProductType = 4", Context = "Any", Visibility = ViewItemVisibility.Show)]
     [Appearance("HideOnProductType4", TargetItems =
-        "ProductionValue, ActiveProductType5, ResetAddQuality60sType5, ResetAddCurrentValueType5, ResetAddQualityTotalValueType5, ResetAddRollFinishValueType5",
+        "ActiveProductType5, ResetAddQuality60sType5, ResetAddCurrentValueType5, ResetAddQualityTotalValueType5, ResetAddRollFinishValueType5",
         Criteria = "ProductType != 4", Context = "Any", Visibility = ViewItemVisibility.Hide)]
-    [Appearance("HideOffProductType4", TargetItems =
-        "ConnectCheckAdd",
-        Criteria = "ProductType = 4", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     #region Appearance Product Type 5
     [Appearance("ShowOnProductType5", TargetItems =
@@ -75,7 +71,7 @@ namespace CR_SFC.Module.BusinessObjects
         "CurrentMetersTag, HexCMAdressControl, HexCMByteControl, TotalMetersTag, HexTMAdressControl, HexTMByteControl, TotalFirstIndex, TotalSecondIndex, CurrentFirstIndex, CurrentSecondIndex",
         Criteria = "ProductType != 5", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     [Appearance("HideOffProductType5", TargetItems =
-        "ProductionGain, CurrentProductionAddress, ConnectCheckAdd",
+        "ProductionGain, CurrentProductionAddress, ProductionValue",
         Criteria = "ProductType = 5", Context = "Any", Visibility = ViewItemVisibility.Hide)]
     #endregion
     [Appearance("test1", TargetItems = "EtorCheck", Criteria = "ConnectionsDeviceName = 'MODBUS'", Context = "Any", Enabled = true)]
@@ -98,12 +94,12 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ID), ref id, value);
         }
 
-        string name;
-        [Size(20)]
+        string _Name;
+        [Size(20), XafDisplayName("Machine Name")]
         public string Name
         {
-            get => name;
-            set => SetPropertyValue(nameof(Name), ref name, value);
+            get => _Name;
+            set => SetPropertyValue(nameof(Name), ref _Name, value);
         }
 
         Connections _ConnectionID;
@@ -115,7 +111,8 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int productionStartType;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Product. Start Type")]
+        [ModelDefault("PredefinedValues", "1;2")]
         public int ProductionStartType
         {
             get => productionStartType;
@@ -147,7 +144,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int cycleTime;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Cycle Time (s)")]
         public int CycleTime
         {
             get => cycleTime;
@@ -195,7 +192,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int type2ProductionGroupNumber;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Group Number Exp.")]
         public int Type2ProductionGroupNumber
         {
             get => type2ProductionGroupNumber;
@@ -203,7 +200,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int type2FilterTime;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Filter Time")]
         public int Type2FilterTime
         {
             get => type2FilterTime;
@@ -211,7 +208,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int operationTime;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Operation Time")]
         public int OperationTime
         {
             get => operationTime;
@@ -219,7 +216,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool currentDatasWriteControl;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("SavedCurrentDatasControl")]
         public bool CurrentDatasWriteControl
         {
             get => currentDatasWriteControl;
@@ -227,7 +224,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool cycleTimeControl;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Cycle Time Control")]
         public bool CycleTimeControl
         {
             get => cycleTimeControl;
@@ -251,7 +248,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool etorCheck; // ConnectionsDeviceName, MODBUS ise tıklanabilir olacak
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Gateway")]
         public bool EtorCheck
         {
             get => etorCheck;
@@ -291,7 +288,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool connectCheck;
-        [VisibleInListView(false)]
+        [VisibleInListView(false), XafDisplayName("Machine Connect Control")]
         public bool ConnectCheck
         {
             get => connectCheck;
@@ -307,7 +304,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionAddress;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Production Add.")]
         public string ProductionAddress
         {
             get => productionAddress;
@@ -315,7 +312,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionValue;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Production Val. Add.")]
         public string ProductionValue
         {
             get => productionValue;
@@ -323,7 +320,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string currentProductionAddress;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Current Production Add.")]
         public string CurrentProductionAddress
         {
             get => currentProductionAddress;
@@ -347,7 +344,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string secondQualityProductionAddress;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("2. Qu. Product. Add.")]
         public string SecondQualityProductionAddress
         {
             get => secondQualityProductionAddress;
@@ -355,7 +352,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productionStartAddress;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Product. Start. Add.")]
         public string ProductionStartAddress
         {
             get => productionStartAddress;
@@ -363,7 +360,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string activeProductType5;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Active Pro. Add.")]
         public string ActiveProductType5
         {
             get => activeProductType5;
@@ -371,7 +368,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddQuality60sType5;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Reset Add. Quality 60s")]
         public string ResetAddQuality60sType5
         {
             get => resetAddQuality60sType5;
@@ -379,7 +376,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddCurrentValueType5;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Reset Add. Current Value")]
         public string ResetAddCurrentValueType5
         {
             get => resetAddCurrentValueType5;
@@ -387,7 +384,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddQualityTotalValueType5;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Reset Add. Quality Total")]
         public string ResetAddQualityTotalValueType5
         {
             get => resetAddQualityTotalValueType5;
@@ -395,7 +392,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string resetAddRollFinishValueType5;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Reset Add. Roll Finish")]
         public string ResetAddRollFinishValueType5
         {
             get => resetAddRollFinishValueType5;
@@ -450,8 +447,16 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(TotalSecondIndex), ref totalSecondIndex, value);
         }
 
+        Tags _ConnectCheckAddID;
+        [Size(50), VisibleInListView(false), XafDisplayName("Connect Address")]
+        public Tags ConnectCheckAddID
+        {
+            get => _ConnectCheckAddID;
+            set => SetPropertyValue(nameof(ConnectCheckAddID), ref _ConnectCheckAddID, value);
+        }
+
         string connectCheckAdd;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), VisibleInDetailView(false)]
         public string ConnectCheckAdd
         {
             get => connectCheckAdd;
@@ -459,7 +464,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string mqttTopicName;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Topic Name")]
         public string MqttTopicName
         {
             get => mqttTopicName;
@@ -467,7 +472,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string type2ProductionGroupNumberAdd;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Group Number Add.")]
         public string Type2ProductionGroupNumberAdd
         {
             get => type2ProductionGroupNumberAdd;
@@ -475,7 +480,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string type2FilterAdress;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), VisibleInListView(false), XafDisplayName("Filter Address")]
         public string Type2FilterAdress
         {
             get => type2FilterAdress;

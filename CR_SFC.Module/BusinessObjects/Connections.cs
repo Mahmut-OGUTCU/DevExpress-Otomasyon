@@ -18,8 +18,8 @@ namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
     [Appearance("DeviceNameEnable", TargetItems = "DeviceName", Enabled = false)]
-    [Appearance("PLCTypeEnable", TargetItems = "PLCTypeID", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
-    [Appearance("FillPLCType", TargetItems = "PLCTypeID", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
+    [Appearance("PLCTypeEnable", TargetItems = "PLCType", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
+    [Appearance("FillPLCType", TargetItems = "PLCType", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
     public class Connections : XPBaseObject
     {
         public Connections(Session session) : base(session)
@@ -79,17 +79,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(Slot), ref slot, value);
         }
 
-        ProductNames _ProductOID;
-        [XafDisplayName("Product Name"), ImmediatePostData, VisibleInListView(false)]
-        public ProductNames ProductOID
-        {
-            get => _ProductOID;
-            set => SetPropertyValue(nameof(ProductOID), ref _ProductOID, value);
-        }
-
-        string productName;
-        [Size(50), VisibleInDetailView(false)]
-        public string ProductName
+        ProductNames productName;
+        [Size(50), ImmediatePostData]
+        public ProductNames ProductName
         {
             get => productName;
             set => SetPropertyValue(nameof(ProductName), ref productName, value);
@@ -114,6 +106,7 @@ namespace CR_SFC.Module.BusinessObjects
 
         string terminalType;
         [Size(50), VisibleInListView(false)]
+        [ModelDefault("PredefinedValues", "0;1")]
         public string TerminalType
         {
             get => terminalType;
@@ -136,17 +129,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(DeviceName), ref deviceName, value);
         }
 
-        PLCType _PLCTypeID;
-        [Size(50), VisibleInListView(false), XafDisplayName("PLC Type"), ImmediatePostData]
-        public PLCType PLCTypeID
-        {
-            get => _PLCTypeID;
-            set => SetPropertyValue(nameof(PLCTypeID), ref _PLCTypeID, value);
-        }
-
-        string _PLCType;
-        [Size(50), VisibleInDetailView(false), VisibleInListView(false)]
-        public string PLCType
+        PLCType _PLCType;
+        [Size(50), VisibleInListView(false), ImmediatePostData, XafDisplayName("PLC Type")]
+        public PLCType PLCType
         {
             get => _PLCType;
             set => SetPropertyValue(nameof(PLCType), ref _PLCType, value);
@@ -180,20 +165,6 @@ namespace CR_SFC.Module.BusinessObjects
         public XPCollection<Machines> Machines
         {
             get { return GetCollection<Machines>(nameof(Machines)); }
-        }
-
-        protected override void OnSaving()
-        {
-            base.OnSaving();
-            if (ProductOID != null)
-            {
-                productName = ProductOID.ProductName;
-            }
-
-            if (PLCTypeID != null)
-            {
-                PLCType = PLCTypeID.ToString();
-            }
         }
     }
 }

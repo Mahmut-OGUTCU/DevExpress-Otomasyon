@@ -33,17 +33,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ID), ref id, value);
         }
 
-        // NOTE: DB'de yok
-        Machines machineID;
-        public Machines MachineID
-        {
-            get => machineID;
-            set => SetPropertyValue(nameof(MachineID), ref machineID, value);
-        }
-
-        string machineName;
+        Machines machineName;
         [Size(50)]
-        public string MachineName
+        public Machines MachineName
         {
             get => machineName;
             set => SetPropertyValue(nameof(MachineName), ref machineName, value);

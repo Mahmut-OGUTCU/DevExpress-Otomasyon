@@ -26,7 +26,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int id;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInListView(false)]
         public int ID
         {
             get => id;
@@ -34,6 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int criterionCycleTime;
+        [VisibleInListView(false)]
         public int CriterionCycleTime
         {
             get => criterionCycleTime;
@@ -41,6 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int qualityType;
+        [VisibleInListView(false)]
         public int QualityType
         {
             get => qualityType;
@@ -48,6 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double criterionGain;
+        [VisibleInListView(false)]
         public double CriterionGain
         {
             get => criterionGain;
@@ -55,6 +58,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double precisionValue;
+        [VisibleInListView(false)]
         public double PrecisionValue
         {
             get => precisionValue;
@@ -62,6 +66,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double minValue;
+        [VisibleInListView(false)]
         public double MinValue
         {
             get => minValue;
@@ -69,6 +74,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double maxValue;
+        [VisibleInListView(false)]
         public double MaxValue
         {
             get => maxValue;
@@ -76,6 +82,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double destMinValue;
+        [VisibleInListView(false)]
         public double DestMinValue
         {
             get => destMinValue;
@@ -83,6 +90,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double destMaxValue;
+        [VisibleInListView(false)]
         public double DestMaxValue
         {
             get => destMaxValue;
@@ -90,6 +98,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double cycleDifferenceValue;
+        [VisibleInListView(false)]
         public double CycleDifferenceValue
         {
             get => cycleDifferenceValue;
@@ -97,6 +106,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool cycleWrite;
+        [VisibleInListView(false)]
         public bool CycleWrite
         {
             get => cycleWrite;
@@ -104,6 +114,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool cycleDifference;
+        [VisibleInListView(false)]
         public bool CycleDifference
         {
             get => cycleDifference;
@@ -111,7 +122,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string machineName;
-        [Size(50), VisibleInDetailView(false)]
+        [Size(50), VisibleInDetailView(false), VisibleInListView(false)]
         public string MachineName
         {
             get => machineName;
