@@ -3,6 +3,7 @@ using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
@@ -17,9 +18,12 @@ using System.Text;
 namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
+    [DefaultPropertyAttribute("Name")]
+    [RuleCriteria("ThreadSleepTime", DefaultContexts.Save, "ThreadSleepTime != 0", "ThreadSleepTime 0'dan büyük olmalıdır.", SkipNullOrEmptyValues = false)]
     [Appearance("DeviceNameEnable", TargetItems = "DeviceName", Enabled = false)]
-    [Appearance("PLCTypeEnable", TargetItems = "PLCTypeID", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
-    [Appearance("FillPLCType", TargetItems = "PLCTypeID", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
+    //[Appearance("PLCTypeEnable", TargetItems = "PLCTypeID", Criteria = "DeviceName != 'SIEMENS'", Enabled = false)]
+    [Appearance("Hide", TargetItems = "PLCTypeID, Rack, Slot, Topic", Criteria = "DeviceName != 'SIEMENS'", Context = "Any", Visibility = ViewItemVisibility.Hide)]
+    //[Appearance("FillPLCType", TargetItems = "PLCTypeID", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
     public class Connections : XPBaseObject
     {
         public Connections(Session session) : base(session)
@@ -57,6 +61,14 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ID), ref id, value);
         }
 
+        string _Name;
+        [XafDisplayName("Connection Name")]
+        public string Name
+        {
+            get => _Name;
+            set => SetPropertyValue(nameof(Name), ref _Name, value);
+        }
+
         int machineNumber;
         [XafDisplayName("Machine Number"), VisibleInListView(false)]
         public int MachineNumber
@@ -74,8 +86,11 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int threadSleepTime;
-        [RuleRequiredField("threadSleepTime-Required", DefaultContexts.Save, "Lütfen Thread Sleep Time Alanını Doldurunuz"), 
-            XafDisplayName("Thread Sleep Time (ms)"), VisibleInListView(false)]
+        //[RuleRequiredField("threadSleepTime-Required", DefaultContexts.Save, "Lütfen Thread Sleep Time Alanını Doldurunuz")]
+        //[RuleValueComparison("threadSleepTime-Required", DefaultContexts.Save, ValueComparisonType.NotEquals, 0, TargetCriteria = "ThreadSleepTime > 0")]
+        //[RuleValueComparison("threadSleepTime-Required", DefaultContexts.Save, ValueComparisonType.GreaterThanOrEqual, 0)]
+        //[RuleRequiredField("SpouseNameIsRequiredWhenMarried", DefaultContexts.Save, "ertretert", TargetCriteria = "ThreadSleepTime > 0")]
+        //[XafDisplayName("Thread Sleep Time (ms)"), VisibleInListView(false)]
         public int ThreadSleepTime
         {
             get => threadSleepTime;
@@ -124,6 +139,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string terminalType;
+        [RuleRequiredField("TerminalType-Required", DefaultContexts.Save, "Lütfen Terminal Type Alanını Seçiniz")]
         [Size(50), VisibleInListView(false)]
         [ModelDefault("PredefinedValues", "0;1")]
         public string TerminalType

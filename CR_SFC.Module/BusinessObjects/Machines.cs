@@ -76,6 +76,7 @@ namespace CR_SFC.Module.BusinessObjects
     #endregion
     [Appearance("test1", TargetItems = "EtorCheck", Criteria = "ConnectionsDeviceName = 'MODBUS'", Context = "Any", Enabled = true)]
     [Appearance("test2", TargetItems = "EtorCheck", Criteria = "ConnectionsDeviceName != 'MODBUS'", Context = "Any", Enabled = false)]
+    [Appearance("test3", TargetItems = "StartValue, EndValue", Criteria = "1=1", Context = "Any", Enabled = false)]
     public class Machines : XPBaseObject
     {
         public Machines(Session session) : base(session)
@@ -172,7 +173,7 @@ namespace CR_SFC.Module.BusinessObjects
         [VisibleInListView(false), VisibleInLookupListView(false), XafDisplayName("Transction Batch")]
         public int TransactionBatch
         {
-            get => transactionBatch;
+            get => transactionBatch != 1 ? transactionBatch : 1;
             set => SetPropertyValue(nameof(TransactionBatch), ref transactionBatch, value);
         }
 
@@ -196,7 +197,7 @@ namespace CR_SFC.Module.BusinessObjects
         [VisibleInListView(false), VisibleInLookupListView(false), XafDisplayName("Slave Address")]
         public int SlaveAddress
         {
-            get => slaveAddress;
+            get => slaveAddress != 1 ? slaveAddress : 1;
             set => SetPropertyValue(nameof(SlaveAddress), ref slaveAddress, value);
         }
 
@@ -261,7 +262,7 @@ namespace CR_SFC.Module.BusinessObjects
         [VisibleInListView(false), VisibleInLookupListView(false), XafDisplayName("Start Value")]
         public int StartValue
         {
-            get => startValue;
+            get => 1;
             set => SetPropertyValue(nameof(StartValue), ref startValue, value);
         }
 
@@ -269,7 +270,7 @@ namespace CR_SFC.Module.BusinessObjects
         [VisibleInListView(false), VisibleInLookupListView(false), XafDisplayName("End Value")]
         public int EndValue
         {
-            get => endValue;
+            get => 2;
             set => SetPropertyValue(nameof(EndValue), ref endValue, value);
         }
 
