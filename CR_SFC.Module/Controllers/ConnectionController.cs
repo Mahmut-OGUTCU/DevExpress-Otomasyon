@@ -41,13 +41,13 @@ namespace CR_SFC.Module.Controllers
 
         private void ObjectSpace_ObjectChanged(object sender, ObjectChangedEventArgs e)
         {
-            //
-            if (e.PropertyName == "ProductName" && e.NewValue != null)
-                ((Connections)View.CurrentObject).DeviceName = ((Connections)View.CurrentObject).ProductName.ProtocolName.ToString();
+
+            if (e.PropertyName == "ProductNameProductNameID" && e.NewValue != null)
+                ((Connections)View.CurrentObject).DeviceName = ((Connections)View.CurrentObject).ProductNameProductNameID.ProtocolName;
 
             //
             if (((Connections)View.CurrentObject).DeviceName?.ToString() != "SIEMENS")
-                ((Connections)View.CurrentObject).PLCType = 0;
+                ((Connections)View.CurrentObject).PLCTypeID = (EnumObjects.PLCType)0;
 
             //
             if ((e.PropertyName == "ProductName" && e.NewValue == null))

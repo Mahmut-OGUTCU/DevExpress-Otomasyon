@@ -33,13 +33,6 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ID), ref id, value);
         }
 
-        string description;
-        public string Description
-        {
-            get => description;
-            set => SetPropertyValue(nameof(Description), ref description, value);
-        }
-
         string panoName;
         [Size(50)]
         public string PanoName
@@ -48,5 +41,11 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(PanoName), ref panoName, value);
         }
 
+        string description;
+        public string Description
+        {
+            get => description;
+            set => SetPropertyValue(nameof(Description), ref description, value);
+        }
     }
 }

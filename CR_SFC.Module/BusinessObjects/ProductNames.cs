@@ -16,6 +16,7 @@ using System.Text;
 namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
+    [XafDefaultProperty(nameof(ProductName))]
     public class ProductNames : XPBaseObject
     {
         public ProductNames(Session session) : base(session)
@@ -25,6 +26,27 @@ namespace CR_SFC.Module.BusinessObjects
         {
             base.AfterConstruction();
         }
+
+        #region ProductNameRelationships
+        PLCLibrarys _PanoNamePLCLibraryID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("Pano Name")]
+        public PLCLibrarys PanoNamePLCLibraryID
+        {
+            get
+            {
+                if (_PanoNamePLCLibraryID == null)
+                    return Session.Query<PLCLibrarys>().FirstOrDefault(x => x.PanoName == PanoName);
+                return _PanoNamePLCLibraryID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(PanoNamePLCLibraryID), ref _PanoNamePLCLibraryID, value);
+                PanoName = PanoNamePLCLibraryID.PanoName;
+            }
+        }
+
+
+        #endregion
 
         int oid;
         [Key(AutoGenerate = true), VisibleInListView(false), VisibleInDetailView(false)]
@@ -42,8 +64,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ProductName), ref productName, value);
         }
 
-        PLCLibrarys panoName;
-        public PLCLibrarys PanoName
+        string panoName;
+        [VisibleInListView(false), VisibleInDetailView(false)]
+        public string PanoName
         {
             get => panoName;
             set => SetPropertyValue(nameof(PanoName), ref panoName, value);
@@ -57,11 +80,37 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(SectionName), ref sectionName, value);
         }
 
-        ProtocolType protocolName;
-        public ProtocolType ProtocolName
+        string protocolName;
+        [VisibleInListView(false), VisibleInDetailView(false)]
+        public string ProtocolName
         {
             get => protocolName;
             set => SetPropertyValue(nameof(ProtocolName), ref protocolName, value);
+        }
+
+        ProtocolType _ProtocolTypeID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("Pano Name")]
+        public ProtocolType ProtocolTypeID
+        {
+            get
+            {
+                if (_ProtocolTypeID.ToString() == "Seçiniz")
+                {
+                    foreach (var item in Enum.GetValues(typeof(ProtocolType)))
+                    {
+                        if (item.ToString() == ProtocolName)
+                        {
+                            return (ProtocolType)item;
+                        }
+                    }
+                }
+                return _ProtocolTypeID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(ProtocolTypeID), ref _ProtocolTypeID, value);
+                ProtocolName = ProtocolTypeID.ToString();
+            }
         }
     }
 }

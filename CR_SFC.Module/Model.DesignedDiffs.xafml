@@ -73,6 +73,101 @@
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
     <ListView Id="Connections_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <DetailView Id="Machines_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="75.932611311672687">
+            <LayoutGroup Id="Machines" RelativeSize="100">
+              <LayoutGroup Id="Machines_col1" RelativeSize="50">
+                <LayoutItem Id="ProductType" RelativeSize="5.4054054054054053" />
+                <LayoutItem Id="Name" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ConnectionID" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ConnectCheckAddTagID" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="MqttTopicName" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="Module" Index="5" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="TransactionBatch" Index="6" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="CycleTime" Index="7" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="SlaveAddress" Index="8" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="CycleTimeControl" Index="9" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="MachineWorkCondition" Index="10" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="EtorCheck" Index="11" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ConnectCheck" Index="12" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ProductionAddressTagID" Index="13" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="StartValue" Index="14" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="EndValue" Index="15" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="Type2ProductionGroupNumberAddTagID" Index="16" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="Type2FilterAdressTagID" Index="17" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="Type2ProductionGroupNumber" Index="18" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="Type2FilterTime" Index="19" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="CurrentProductionAddressTagID" Index="20" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ProductionValueTagID" Index="21" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="SecondQualityProductionAddressTagID" Index="22" RelativeSize="9.45945945945946" />
+                <LayoutItem Id="OperationTime" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Machines_col2" RelativeSize="50">
+                <LayoutItem Id="ProductionStartAddressTagID" RelativeSize="5.4054054054054053" />
+                <LayoutItem Id="ProductionStartType" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="StartValueType4" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="StopValueType4" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ProductionGain" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ProductionSet" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="SavedCurrentDatas" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="OperationTime" ViewItem="OperationTime" Index="7" RelativeSize="4.0540540540540544" IsNewNode="True" />
+                <LayoutItem Id="CurrentDatasWriteControl" Index="8" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ActiveProductType5TagID" Index="9" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ResetAddCurrentValueType5" Index="10" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ResetAddQuality60sType5" Index="11" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ResetAddQualityTotalValueType5" Index="12" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="ResetAddRollFinishValueType5" Index="13" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="CurrentMetersTagID" Index="14" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="TotalMetersTagID" Index="15" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="CurrentFirstIndex" Index="16" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="CurrentSecondIndex" Index="17" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="HexCMAdressControl" Index="18" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="HexCMByteControl" Index="19" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="TotalFirstIndex" Index="20" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="TotalSecondIndex" Index="21" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="HexTMAdressControl" Index="22" RelativeSize="4.0540540540540544" />
+                <LayoutItem Id="HexTMByteControl" Index="23" RelativeSize="5.4054054054054053" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="24.067388688327316">
+            <LayoutGroup Id="FastProduction" RelativeSize="100">
+              <LayoutItem Id="FastProduction" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="QualityCriterion" RelativeSize="100">
+              <LayoutItem Id="QualityCriterion" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Warning" RelativeSize="100">
+              <LayoutItem Id="Warning" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Stance" RelativeSize="100">
+              <LayoutItem Id="Stance" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Machines_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <DetailView Id="ProductNames_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ProductNames" RelativeSize="100">
+              <LayoutItem Id="ProductName" Index="0" RelativeSize="3.7383177570093458" />
+              <LayoutItem Id="PanoNamePLCLibraryID" Index="1" RelativeSize="2.8037383177570092" />
+              <LayoutItem Id="SectionName" RelativeSize="2.8037383177570092" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ProductNames_ListView">
+      <Columns>
+        <ColumnInfo Id="ProductName" SortIndex="0" SortOrder="Ascending" Index="0" />
+        <ColumnInfo Id="PanoNamePLCLibraryID" SortIndex="-1" SortOrder="None" Index="1" />
+      </Columns>
+    </ListView>
   </Views>
 </Application>

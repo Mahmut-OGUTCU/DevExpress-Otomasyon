@@ -25,6 +25,25 @@ namespace CR_SFC.Module.BusinessObjects
             base.AfterConstruction();
         }
 
+        #region MachineRelationships
+        Machines _ShiftMachineID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("Machine")]
+        public Machines ShiftMachineID
+        {
+            get
+            {
+                if (_ShiftMachineID == null)
+                    return Session.Query<Machines>().FirstOrDefault(x => x.Name == Machine);
+                return _ShiftMachineID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(ShiftMachineID), ref _ShiftMachineID, value);
+                Machine = ShiftMachineID.Name;
+            }
+        }
+        #endregion
+
         int oid;
         [Key(AutoGenerate = true)]
         public int OID
@@ -40,8 +59,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(Code), ref code, value);
         }
 
-        Machines machine;
-        public Machines Machine
+        string machine;
+        [VisibleInDetailView(false), VisibleInListView(false)]
+        public string Machine
         {
             get => machine;
             set => SetPropertyValue(nameof(Machine), ref machine, value);

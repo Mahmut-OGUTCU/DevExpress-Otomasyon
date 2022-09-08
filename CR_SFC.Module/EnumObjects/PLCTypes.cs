@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.ExpressApp.DC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace CR_SFC.Module.EnumObjects
 {
     public enum PLCType
     {
-        Seçiniz = 0,
+        [XafDisplayName("Seçiniz")]
+        Seciniz = 0,
         S71200 = 1,
         S71500 = 2,
         S7200 = 3,

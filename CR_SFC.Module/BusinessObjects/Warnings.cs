@@ -25,6 +25,25 @@ namespace CR_SFC.Module.BusinessObjects
             base.AfterConstruction();
         }
 
+        #region TagRelationships
+        Tags _AddressTagID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("Address")]
+        public Tags AddressTagID
+        {
+            get
+            {
+                if (_AddressTagID == null)
+                    return Session.Query<Tags>().FirstOrDefault(x => x.TagName == Address);
+                return _AddressTagID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(AddressTagID), ref _AddressTagID, value);
+                Address = AddressTagID.TagName;
+            }
+        }
+        #endregion
+
         int id;
         [Key(AutoGenerate = true)]
         public int ID
@@ -41,9 +60,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(CurrentValue), ref currentValue, value);
         }
 
-        Tags address;
-        [Size(20)]
-        public Tags Address
+        string address;
+        [Size(20), VisibleInDetailView(false), VisibleInListView(false)]
+        public string Address
         {
             get => address;
             set => SetPropertyValue(nameof(Address), ref address, value);

@@ -18,8 +18,8 @@ namespace CR_SFC.Module.BusinessObjects
 {
     [DefaultClassOptions]
     [Appearance("DeviceNameEnable", TargetItems = "DeviceName", Enabled = false)]
-    [Appearance("PLCTypeEnable", TargetItems = "PLCType", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
-    [Appearance("FillPLCType", TargetItems = "PLCType", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
+    [Appearance("PLCTypeEnable", TargetItems = "PLCTypeID", Criteria = "DeviceName != 'SIEMENS'",  Enabled = false)]
+    [Appearance("FillPLCType", TargetItems = "PLCTypeID", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
     public class Connections : XPBaseObject
     {
         public Connections(Session session) : base(session)
@@ -29,6 +29,25 @@ namespace CR_SFC.Module.BusinessObjects
         {
             base.AfterConstruction();
         }
+
+        #region ProductNameRelationships
+        ProductNames _ProductNameProductNameID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("Product Name")]
+        public ProductNames ProductNameProductNameID
+        {
+            get
+            {
+                if (_ProductNameProductNameID == null)
+                    return Session.Query<ProductNames>().FirstOrDefault(x => x.ProductName == ProductName);
+                return _ProductNameProductNameID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(ProductNameProductNameID), ref _ProductNameProductNameID, value);
+                ProductName = ProductNameProductNameID.ProductName;
+            }
+        }
+        #endregion
 
         int id;
         [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
@@ -79,9 +98,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(Slot), ref slot, value);
         }
 
-        ProductNames productName;
-        [Size(50), ImmediatePostData]
-        public ProductNames ProductName
+        string productName;
+        [Size(50), VisibleInListView(false), VisibleInDetailView(false)]
+        public string ProductName
         {
             get => productName;
             set => SetPropertyValue(nameof(ProductName), ref productName, value);
@@ -121,7 +140,7 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(CommunicationAddress), ref communicationAddress, value);
         }
 
-        string deviceName; //ProductNames.ProtocolName
+        string deviceName; //ProductNameProductNameID.ProtocolName
         [Size(50), VisibleInListView(false)]
         public string DeviceName
         {
@@ -129,12 +148,37 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(DeviceName), ref deviceName, value);
         }
 
-        PLCType _PLCType;
-        [Size(50), VisibleInListView(false), ImmediatePostData, XafDisplayName("PLC Type")]
-        public PLCType PLCType
+        string _PLCType;
+        [Size(50), VisibleInListView(false), VisibleInDetailView(false), ImmediatePostData, XafDisplayName("PLC Type")]
+        public string PLCType
         {
             get => _PLCType;
             set => SetPropertyValue(nameof(PLCType), ref _PLCType, value);
+        }
+
+        PLCType _PLCTypeID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("PLC Type"), VisibleInListView(false)]
+        public PLCType PLCTypeID
+        {
+            get
+            {
+                if (_PLCTypeID.ToString() == "Seçiniz")
+                {
+                    foreach (var item in Enum.GetValues(typeof(PLCType)))
+                    {
+                        if (item.ToString() == PLCType)
+                        {
+                            return (PLCType)item;
+                        }
+                    }
+                }
+                return _PLCTypeID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(PLCTypeID), ref _PLCTypeID, value);
+                PLCType = PLCTypeID.ToString();
+            }
         }
 
         string topic;

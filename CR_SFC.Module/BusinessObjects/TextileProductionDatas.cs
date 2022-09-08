@@ -25,6 +25,25 @@ namespace CR_SFC.Module.BusinessObjects
             base.AfterConstruction();
         }
 
+        #region MachineRelationships
+        Machines _TextileProdMachineID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("Machine")]
+        public Machines TextileProdMachineID
+        {
+            get
+            {
+                if (_TextileProdMachineID == null)
+                    return Session.Query<Machines>().FirstOrDefault(x => x.Name == Machine);
+                return _TextileProdMachineID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(TextileProdMachineID), ref _TextileProdMachineID, value);
+                Machine = TextileProdMachineID.Name;
+            }
+        }
+        #endregion
+
         int oid;
         [Key(AutoGenerate = true)]
         public int OID
@@ -47,8 +66,8 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(WelfValueNOSFC), ref welfValueNOSFC, value);
         }
 
-        Machines machine;
-        public Machines Machine
+        string machine;
+        public string Machine
         {
             get => machine;
             set => SetPropertyValue(nameof(Machine), ref machine, value);

@@ -48,12 +48,14 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ProductionIndex), ref productionIndex, value);
         }
 
-        Tags _TagsID;
-        public Tags TagsID
-        {
-            get => _TagsID;
-            set => SetPropertyValue(nameof(TagsID), ref _TagsID, value);
-        }
+        // NOTE: tagsid
+
+        //Tags _TagsID;
+        //public Tags TagsID
+        //{
+        //    get => _TagsID;
+        //    set => SetPropertyValue(nameof(TagsID), ref _TagsID, value);
+        //}
 
         string address;
         [Size(50), VisibleInDetailView(false)]
@@ -75,8 +77,8 @@ namespace CR_SFC.Module.BusinessObjects
         {
             base.OnSaving();
 
-            if (TagsID != null)
-                address = TagsID.TagName;
+            //if (TagsID != null)
+            //    address = TagsID.TagName;
         }
 
     }

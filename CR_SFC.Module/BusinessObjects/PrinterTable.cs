@@ -25,6 +25,25 @@ namespace CR_SFC.Module.BusinessObjects
             base.AfterConstruction();
         }
 
+        #region MachineRelationships
+        Machines _PrinterTableMachineID;
+        [NonPersistent, ImmediatePostData, XafDisplayName("Machine Name")]
+        public Machines PrinterTableMachineID
+        {
+            get
+            {
+                if (_PrinterTableMachineID == null)
+                    return Session.Query<Machines>().FirstOrDefault(x => x.Name == MachineName);
+                return _PrinterTableMachineID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(PrinterTableMachineID), ref _PrinterTableMachineID, value);
+                MachineName = PrinterTableMachineID.Name;
+            }
+        }
+        #endregion
+
         int oid;
         [Key(AutoGenerate = true)]
         public int OID
@@ -73,8 +92,9 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(Building4IpAddress), ref building4IpAddress, value);
         }
 
-        Machines machineName;
-        public Machines MachineName
+        string machineName;
+        [VisibleInListView(false), VisibleInDetailView(false)]
+        public string MachineName
         {
             get => machineName;
             set => SetPropertyValue(nameof(MachineName), ref machineName, value);
