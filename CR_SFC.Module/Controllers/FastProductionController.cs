@@ -22,6 +22,7 @@ namespace CR_SFC.Module.Controllers
         public FastProductionController()
         {
             InitializeComponent();
+            TargetObjectType = typeof(FastProductions);
         }
         protected override void OnActivated()
         {
@@ -38,7 +39,7 @@ namespace CR_SFC.Module.Controllers
         }
         private void ObjectSpace_ObjectDeleting(object sender, ObjectsManipulatingEventArgs e)
         {
-            ObjectCount(false);
+            //ObjectCount(false);
         }
 
         private void ObjectSpace_ObjectSaving(object sender, ObjectManipulatingEventArgs e)
@@ -55,10 +56,10 @@ namespace CR_SFC.Module.Controllers
                 if (machine != null)
                 {
                     var machineFastProductions = machine.FastProduction;
-                    if (machineFastProductions.Count() > 4 && savingordeleting)
-                        throw new UserFriendlyException("Bir makineye 4 adetten fazla fast production ekleyemezsiniz.");
+                    //if (machineFastProductions.Count() > 4 && savingordeleting)
+                    if (machineFastProductions.Count() > 4)
+                            throw new UserFriendlyException("Bir makineye 4 adetten fazla fast production ekleyemezsiniz.");
 
-                    // TODO: Objectdeleting yap
                     // NOTE: son index silme iptal
                     //if (machineFastProductions.Count() != fastProduction.ProductionIndex && !savingordeleting)
                     //    throw new UserFriendlyException("En son ProductionIndex kaydını siliniz.");

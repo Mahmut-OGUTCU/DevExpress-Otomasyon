@@ -125,7 +125,7 @@ namespace CR_SFC.Module.BusinessObjects
         [Size(50), VisibleInDetailView(false), VisibleInListView(false)]
         public string MachineName
         {
-            get => machineName;
+            get => MachineID.Name.ToString();
             set => SetPropertyValue(nameof(MachineName), ref machineName, value);
         }
 
@@ -168,15 +168,5 @@ namespace CR_SFC.Module.BusinessObjects
             get => _Machines;
             set => SetPropertyValue<Machines>(nameof(MachineID), ref _Machines, value);
         }
-
-        protected override void OnLoading()
-        {
-            base.OnLoading();
-            if (MachineID != null)
-            {
-                MachineName = MachineID.Name.ToString();
-            }
-        }
-
     }
 }

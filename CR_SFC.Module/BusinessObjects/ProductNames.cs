@@ -65,7 +65,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string panoName;
-        [VisibleInListView(false), VisibleInDetailView(false)]
+        [VisibleInListView(false), VisibleInDetailView(false), XafDisplayName("Pano Name")]
         public string PanoName
         {
             get => panoName;
@@ -81,7 +81,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string protocolName;
-        [VisibleInListView(false), VisibleInDetailView(false)]
+        [VisibleInListView(false), VisibleInDetailView(false), XafDisplayName("Protocol Name")]
         public string ProtocolName
         {
             get => protocolName;

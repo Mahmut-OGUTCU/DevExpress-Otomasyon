@@ -34,7 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string panoName;
-        [Size(50)]
+        [Size(50), XafDisplayName("Pano Name")]
         public string PanoName
         {
             get => panoName;
@@ -42,6 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string description;
+        [XafDisplayName("Description")]
         public string Description
         {
             get => description;

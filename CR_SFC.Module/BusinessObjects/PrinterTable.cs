@@ -45,7 +45,7 @@ namespace CR_SFC.Module.BusinessObjects
         #endregion
 
         int oid;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int OID
         {
             get => oid;
@@ -53,7 +53,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string printerName;
-        [Size(50)]
+        [Size(50), XafDisplayName("Printer Name")]
         public string PrinterName
         {
             get => printerName;

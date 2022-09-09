@@ -48,14 +48,27 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ProductionIndex), ref productionIndex, value);
         }
 
-        // NOTE: tagsid
-
-        //Tags _TagsID;
-        //public Tags TagsID
-        //{
-        //    get => _TagsID;
-        //    set => SetPropertyValue(nameof(TagsID), ref _TagsID, value);
-        //}
+        #region TagRelationships
+        Tags _AddressTagID;
+        [NonPersistent, XafDisplayName("Connect Address")]
+        public Tags AddressTagID
+        {
+            get
+            {
+                if (Address != null)
+                {
+                    if (_AddressTagID == null)
+                        return Session.Query<Tags>().FirstOrDefault(x => x.TagName == Address);
+                }
+                return _AddressTagID;
+            }
+            set
+            {
+                SetPropertyValue(nameof(AddressTagID), ref _AddressTagID, value);
+                Address = AddressTagID.TagName;
+            }
+        }
+        #endregion
 
         string address;
         [Size(50), VisibleInDetailView(false)]
@@ -72,14 +85,5 @@ namespace CR_SFC.Module.BusinessObjects
             get => explain;
             set => SetPropertyValue(nameof(Explain), ref explain, value);
         }
-
-        protected override void OnSaving()
-        {
-            base.OnSaving();
-
-            //if (TagsID != null)
-            //    address = TagsID.TagName;
-        }
-
     }
 }

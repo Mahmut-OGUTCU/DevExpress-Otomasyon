@@ -33,14 +33,6 @@ namespace CR_SFC.Module.BusinessObjects
             set => SetPropertyValue(nameof(ID), ref id, value);
         }
 
-        // Machine olduğu için iptal
-        //int machineID;
-        //public int MachineID
-        //{
-        //    get => machineID;
-        //    set => SetPropertyValue(nameof(MachineID), ref machineID, value);
-        //}
-
         int priority;
         public int Priority
         {
