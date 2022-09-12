@@ -28,23 +28,50 @@ namespace CR_SFC.Module.Controllers
         {
             base.OnActivated();
             ObjectSpace.ObjectSaving += ObjectSpace_ObjectSaving;
-            ObjectSpace.ObjectDeleting += ObjectSpace_ObjectDeleting;
+            ObjectSpace.ObjectDeleted += ObjectSpace_ObjectDeleted;
+        }
+
+        private void ObjectSpace_ObjectDeleted(object sender, ObjectsManipulatingEventArgs e)
+        {
+            if (View.CurrentObject is FastProductions fastProduction)
+            {
+                var machine = fastProduction.MachineID;
+                var machineFastProductions = machine.FastProduction;
+                var index = 1;
+                foreach (var item in machineFastProductions)
+                {
+                    item.ProductionIndex = index;
+                    index++;
+                }
+            }
         }
 
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
             ObjectSpace.ObjectSaving -= ObjectSpace_ObjectSaving;
-            ObjectSpace.ObjectDeleting -= ObjectSpace_ObjectDeleting;
-        }
-        private void ObjectSpace_ObjectDeleting(object sender, ObjectsManipulatingEventArgs e)
-        {
-            //ObjectCount(false);
+            ObjectSpace.ObjectDeleted -= ObjectSpace_ObjectDeleted;
         }
 
         private void ObjectSpace_ObjectSaving(object sender, ObjectManipulatingEventArgs e)
         {
-            ObjectCount(true);
+            ObjectCount (true);
+
+            if (View.CurrentObject is FastProductions fastProduction)
+            {
+                var machine = fastProduction.MachineID;
+                var machineFastProductions = machine.FastProduction;
+                foreach (var item1 in machineFastProductions)
+                {
+                    foreach (var item2 in machineFastProductions)
+                    {
+                        if ((item1.Address == item2.Address) && (item1.ProductionIndex != item2.ProductionIndex))
+                        {
+                            throw new UserFriendlyException("Aynı Tag Kaydedilemez.");
+                        }
+                    }
+                }
+            }
         }
 
         private void ObjectCount(bool savingordeleting)
@@ -58,18 +85,12 @@ namespace CR_SFC.Module.Controllers
                     var machineFastProductions = machine.FastProduction;
                     //if (machineFastProductions.Count() > 4 && savingordeleting)
                     if (machineFastProductions.Count() > 4)
-                            throw new UserFriendlyException("Bir makineye 4 adetten fazla fast production ekleyemezsiniz.");
-
-                    // NOTE: son index silme iptal
-                    //if (machineFastProductions.Count() != fastProduction.ProductionIndex && !savingordeleting)
-                    //    throw new UserFriendlyException("En son ProductionIndex kaydını siliniz.");
-
-
+                        throw new UserFriendlyException("Bir makineye 4 adetten fazla fast production ekleyemezsiniz.");
 
                     fastProduction.ProductionIndex = machineFastProductions.Count();
                 }
             }
-            
+
         }
 
     }

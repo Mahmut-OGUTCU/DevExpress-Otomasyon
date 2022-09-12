@@ -42,6 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int productionIndex;
+        [VisibleInDetailView(false), VisibleInListView(false)]
         public int ProductionIndex
         {
             get => productionIndex;
@@ -50,7 +51,7 @@ namespace CR_SFC.Module.BusinessObjects
 
         #region TagRelationships
         Tags _AddressTagID;
-        [NonPersistent, XafDisplayName("Connect Address")]
+        [NonPersistent, XafDisplayName("Address")]
         public Tags AddressTagID
         {
             get
