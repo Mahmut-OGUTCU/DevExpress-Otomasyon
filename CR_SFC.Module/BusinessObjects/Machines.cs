@@ -743,20 +743,19 @@ namespace CR_SFC.Module.BusinessObjects
             get => ConnectionID?.DeviceName;
             set => _ConnectionsDeviceName = value;
         }
-
-        [DevExpress.Xpo.Aggregated, Association("QualityCriterion-Machines")]
+        [Association("QualityCriterion-Machines")]
         public XPCollection<QualityCriterions> QualityCriterion
         {
             get { return GetCollection<QualityCriterions>(nameof(QualityCriterion)); }
         }
 
-        [DevExpress.Xpo.Aggregated, Association("Warnings-Machines")]
+        [Association("Warnings-Machines")]
         public XPCollection<Warnings> Warning
         {
             get { return GetCollection<Warnings>(nameof(Warning)); }
         }
 
-        [DevExpress.Xpo.Aggregated, Association("Stance-Machines")]
+        [Association("Stance-Machines")]
         public XPCollection<Stances> Stance
         {
             get { return GetCollection<Stances>(nameof(Stance)); }

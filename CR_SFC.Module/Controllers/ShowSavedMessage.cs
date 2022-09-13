@@ -27,17 +27,33 @@ namespace CR_SFC.Module.Controllers
         protected override void OnActivated()
         {
             base.OnActivated();
-            ObjectSpace.Committing += ObjectSpace_Committing;
+            ObjectSpace.ObjectSaving += ObjectSpace_ObjectSaving;
+            ObjectSpace.ObjectDeleting += ObjectSpace_ObjectDeleting;
         }
 
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
-            ObjectSpace.Committing -= ObjectSpace_Committing;
+            ObjectSpace.ObjectSaving -= ObjectSpace_ObjectSaving;
+            ObjectSpace.ObjectDeleting -= ObjectSpace_ObjectDeleting;
+        }
+        private void ObjectSpace_ObjectDeleting(object sender, ObjectsManipulatingEventArgs e)
+        {
+            if (ObjectSpace.IsDeleting)
+                ShowMessage("Kayıt Silindi !");
         }
 
-        private void ObjectSpace_Committing(object sender, CancelEventArgs e)
+        private void ObjectSpace_ObjectSaving(object sender, ObjectManipulatingEventArgs e)
         {
+            if (ObjectSpace.IsNewObject(View.CurrentObject))
+                ShowMessage("Kayıt Eklendi !");
+            else
+                ShowMessage("Kayıt Güncellendi !");
+        }
+
+        private void ShowMessage(string message = "")
+        {
+            var aa = View;
             MessageOptions options = new MessageOptions
             {
                 Duration = 2000,
@@ -46,16 +62,7 @@ namespace CR_SFC.Module.Controllers
             options.Web.Position = InformationPosition.Bottom;
             options.Win.Caption = "BAŞARILI";
             options.Win.Type = WinMessageType.Toast;
-
-            if (ObjectSpace.IsNewObject(View.CurrentObject))
-                options.Message = string.Format("Kayıt Eklendi !");
-
-            else if (ObjectSpace.IsModified)
-                options.Message = string.Format("Kayıt Güncellendi !");
-
-            else
-                options.Message = string.Format("Kayıt Silindi !");
-
+            options.Message = string.Format(message);
             Application.ShowViewStrategy.ShowMessage(options);
         }
     }

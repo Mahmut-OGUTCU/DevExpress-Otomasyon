@@ -125,7 +125,7 @@ namespace CR_SFC.Module.BusinessObjects
         [Size(50), VisibleInDetailView(false), VisibleInListView(false)]
         public string MachineName
         {
-            get => MachineID.Name.ToString();
+            get => MachineID?.Name.ToString();
             set => SetPropertyValue(nameof(MachineName), ref machineName, value);
         }
 

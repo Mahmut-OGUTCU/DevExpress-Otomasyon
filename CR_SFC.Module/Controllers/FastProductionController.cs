@@ -55,7 +55,7 @@ namespace CR_SFC.Module.Controllers
 
         private void ObjectSpace_ObjectSaving(object sender, ObjectManipulatingEventArgs e)
         {
-            ObjectCount (true);
+            ObjectCount();
 
             if (View.CurrentObject is FastProductions fastProduction)
             {
@@ -74,7 +74,7 @@ namespace CR_SFC.Module.Controllers
             }
         }
 
-        private void ObjectCount(bool savingordeleting)
+        private void ObjectCount()
         {
             // Makine'ye kayıtlı fast productionların sayısına bakar, maks 4 adet girilebilir.
             if (View.CurrentObject is FastProductions fastProduction)
@@ -83,7 +83,6 @@ namespace CR_SFC.Module.Controllers
                 if (machine != null)
                 {
                     var machineFastProductions = machine.FastProduction;
-                    //if (machineFastProductions.Count() > 4 && savingordeleting)
                     if (machineFastProductions.Count() > 4)
                         throw new UserFriendlyException("Bir makineye 4 adetten fazla fast production ekleyemezsiniz.");
 
