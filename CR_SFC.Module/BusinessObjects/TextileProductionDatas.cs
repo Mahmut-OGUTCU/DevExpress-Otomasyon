@@ -45,7 +45,7 @@ namespace CR_SFC.Module.BusinessObjects
         #endregion
 
         int oid;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int OID
         {
             get => oid;
@@ -53,6 +53,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double welfValue;
+        [XafDisplayName("Welf Value")]
         public double WelfValue
         {
             get => welfValue;
@@ -60,6 +61,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double welfValueNOSFC;
+        [XafDisplayName("Welf Value NOSFC")]
         public double WelfValueNOSFC
         {
             get => welfValueNOSFC;
@@ -67,6 +69,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string machine;
+        [VisibleInListView(false), VisibleInDetailView(false)]
         public string Machine
         {
             get => machine;
@@ -74,6 +77,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string code;
+        [XafDisplayName("Code"), VisibleInListView(false)]
         public string Code
         {
             get => code;
@@ -81,6 +85,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string name;
+        [XafDisplayName("Name")]
         public string Name
         {
             get => name;
@@ -88,6 +93,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string employeeCode;
+        [XafDisplayName("Employee Code"), VisibleInListView(false)]
         public string EmployeeCode
         {
             get => employeeCode;
@@ -95,6 +101,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string rollFinishCounter;
+        [XafDisplayName("Roll Finish Counter"), VisibleInListView(false)]
         public string RollFinishCounter
         {
             get => rollFinishCounter;
@@ -102,6 +109,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime startTime;
+        [XafDisplayName("Start Time"), VisibleInListView(false)]
         [RuleRequiredField("startTime2-Required", DefaultContexts.Save, "Lütfen Start Time Alanını Doldurunuz")]
         public DateTime StartTime
         {
@@ -110,6 +118,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime endTime;
+        [XafDisplayName("End Time"), VisibleInListView(false)]
         [RuleRequiredField("endTime2-Required", DefaultContexts.Save, "Lütfen End Time Alanını Doldurunuz")]
         public DateTime EndTime
         {

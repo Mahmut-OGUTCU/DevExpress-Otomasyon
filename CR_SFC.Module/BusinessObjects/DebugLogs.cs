@@ -34,6 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int lineNumber;
+        [XafDisplayName("Line Number")]
         public int LineNumber
         {
             get => lineNumber;
@@ -41,7 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string logType;
-        [Size(10)]
+        [Size(10), XafDisplayName("Log Type")]
         public string LogType
         {
             get => logType;
@@ -49,6 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string header;
+        [XafDisplayName("Header")]
         public string Header
         {
             get => header;
@@ -56,7 +58,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string ipAddress;
-        [Size(15)]
+        [Size(15), XafDisplayName("IP Address")]
         public string IpAddress
         {
             get => ipAddress;
@@ -64,6 +66,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string exceptionMessage;
+        [XafDisplayName("Exeption Message")]
         public string ExceptionMessage
         {
             get => exceptionMessage;
@@ -71,6 +74,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string stackTrace;
+        [XafDisplayName("Stack Trace")]
         public string StackTrace
         {
             get => stackTrace;
@@ -78,6 +82,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime timeOccurred;
+        [XafDisplayName("Time Occurred")]
         [RuleRequiredField("timeOccurred-Required", DefaultContexts.Save, "Lütfen Time Occurred Alanını Doldurunuz")]
         public DateTime TimeOccurred
         {

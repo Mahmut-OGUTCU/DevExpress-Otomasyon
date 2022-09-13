@@ -26,7 +26,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int id;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int ID
         {
             get => id;
@@ -34,6 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Machines machineID;
+        [XafDisplayName("Machine Name")]
         [Association("FastProductions-Machines")]
         public Machines MachineID
         {
@@ -42,7 +43,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int productionIndex;
-        [VisibleInDetailView(false), VisibleInListView(false)]
+        [XafDisplayName("Production Index"), VisibleInDetailView(false), VisibleInListView(false)]
         public int ProductionIndex
         {
             get => productionIndex;
@@ -72,7 +73,7 @@ namespace CR_SFC.Module.BusinessObjects
         #endregion
 
         string address;
-        [Size(50), VisibleInDetailView(false)]
+        [Size(50), XafDisplayName("Address"), VisibleInDetailView(false)]
         public string Address
         {
             get => address;
@@ -80,7 +81,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string explain;
-        [Size(50)]
+        [XafDisplayName("Explain"), Size(50)]
         public string Explain
         {
             get => explain;

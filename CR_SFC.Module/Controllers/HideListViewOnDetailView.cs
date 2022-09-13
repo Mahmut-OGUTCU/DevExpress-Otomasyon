@@ -54,7 +54,7 @@ namespace CR_SFC.Module.Controllers
 
         private void IsFirstRecord()
         {
-            // Kayit ekleme olacaksa (New Record) IsNewObject ile yakalıyoruz.
+            // Kayit ekleme olacaksa IsNewObject ile yakalıyoruz.
             if (ObjectSpace.IsNewObject(View.CurrentObject))
                 HideListView();
         }
@@ -62,9 +62,9 @@ namespace CR_SFC.Module.Controllers
         private void HideListView()
         {
             // İlk kayit olacaksa (First New Record) detailview da listview'lasrı gizle. listview'lar => ListPropertyEditor
-            var ee = View.Items.Where(x => x is ListPropertyEditor);
-            foreach (var i in ee)
-                ((IAppearanceVisibility)i).Visibility = ViewItemVisibility.Hide;
+            var items = View.Items.Where(x => x is ListPropertyEditor);
+            foreach (var item in items)
+                ((IAppearanceVisibility)item).Visibility = ViewItemVisibility.Hide;
         }
     }
 }

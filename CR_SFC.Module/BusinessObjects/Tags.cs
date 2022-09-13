@@ -27,7 +27,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int id;
-        [Key(AutoGenerate = true), VisibleInDetailView(false)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int ID
         {
             get => id;
@@ -45,7 +45,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string tagName;
-        [Size(30)]
+        [Size(30), XafDisplayName("Tag Name")]
         public string TagName
         {
             get => tagName;
@@ -53,7 +53,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string tagAddress;
-        [Size(50)]
+        [Size(50), XafDisplayName("Tag Address")]
         public string TagAddress
         {
             get => tagAddress;
@@ -69,7 +69,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string registerOrder;
-        [Size(10), ModelDefault("PredefinedValues", "LowHigh;HighLow")]
+        [Size(10), XafDisplayName("Register Order"), ModelDefault("PredefinedValues", "LowHigh;HighLow")]
         public string RegisterOrder
         {
             get => registerOrder;
@@ -77,7 +77,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string input;
-        [Size(50), VisibleInDetailView(false), VisibleInListView(false)]
+        [Size(50), XafDisplayName("Input"), VisibleInDetailView(false), VisibleInListView(false)]
         public string Input
         {
             get => input;

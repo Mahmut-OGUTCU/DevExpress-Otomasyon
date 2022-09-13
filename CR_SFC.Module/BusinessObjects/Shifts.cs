@@ -27,7 +27,7 @@ namespace CR_SFC.Module.BusinessObjects
 
         #region MachineRelationships
         Machines _ShiftMachineID;
-        [NonPersistent, ImmediatePostData, XafDisplayName("Machine")]
+        [NonPersistent, ImmediatePostData, XafDisplayName("Machine Name")]
         public Machines ShiftMachineID
         {
             get
@@ -45,7 +45,7 @@ namespace CR_SFC.Module.BusinessObjects
         #endregion
 
         int oid;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int OID
         {
             get => oid;
@@ -53,6 +53,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string code;
+        [XafDisplayName("Code"), VisibleInListView(false)]
         public string Code
         {
             get => code;
@@ -68,6 +69,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string employeeCode;
+        [XafDisplayName("Employee Code"), VisibleInListView(false)]
         public string EmployeeCode
         {
             get => employeeCode;
@@ -75,6 +77,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime startTime;
+        [XafDisplayName("Start Time"), VisibleInListView(false)]
         [RuleRequiredField("startTime1-Required", DefaultContexts.Save, "Lütfen Start Time Alanını Doldurunuz")]
         public DateTime StartTime
         {
@@ -83,6 +86,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime endTime;
+        [XafDisplayName("End Time"), VisibleInListView(false)]
         [RuleRequiredField("endTime1-Required", DefaultContexts.Save, "Lütfen End Time Alanını Doldurunuz")]
         public DateTime EndTime
         {

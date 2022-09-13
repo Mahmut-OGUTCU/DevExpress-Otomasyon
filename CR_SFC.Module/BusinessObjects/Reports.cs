@@ -45,7 +45,7 @@ namespace CR_SFC.Module.BusinessObjects
         #endregion
 
         int id;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int ID
         {
             get => id;
@@ -61,7 +61,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string type;
-        [Size(50)]
+        [Size(50), XafDisplayName("Type")]
         public string Type
         {
             get => type;
@@ -69,7 +69,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string description;
-        [Size(50)]
+        [Size(50), XafDisplayName("Description")]
         public string Description
         {
             get => description;
@@ -77,7 +77,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string panel;
-        [Size(50)]
+        [Size(50), XafDisplayName("Panel")]
         public string Panel
         {
             get => panel;
@@ -85,7 +85,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string pano;
-        [Size(50)]
+        [Size(50), XafDisplayName("Pano")]
         public string Pano
         {
             get => pano;
@@ -93,7 +93,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string sectionName;
-        [Size(50)]
+        [Size(50), XafDisplayName("Section Name")]
         public string SectionName
         {
             get => sectionName;
@@ -101,7 +101,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string protocol;
-        [Size(50)]
+        [Size(50), XafDisplayName("Protocol")]
         public string Protocol
         {
             get => protocol;
@@ -109,7 +109,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string tag;
-        [Size(50)]
+        [Size(50), XafDisplayName("Tag")]
         public string Tag
         {
             get => tag;
@@ -117,7 +117,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string address;
-        [Size(50)]
+        [Size(50), XafDisplayName("Address")]
         public string Address
         {
             get => address;
@@ -125,7 +125,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string input;
-        [Size(50)]
+        [Size(50), XafDisplayName("Input")]
         public string Input
         {
             get => input;

@@ -26,7 +26,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int id;
-        [Key(AutoGenerate = true), VisibleInListView(false)]
+        [Key(AutoGenerate = true), VisibleInListView(false), VisibleInDetailView(false)]
         public int ID
         {
             get => id;
@@ -34,7 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int criterionCycleTime;
-        [VisibleInListView(false)]
+        [XafDisplayName("Criterion Cycle Time"), VisibleInListView(false)]
         public int CriterionCycleTime
         {
             get => criterionCycleTime;
@@ -42,7 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int qualityType;
-        [VisibleInListView(false)]
+        [XafDisplayName("Quality Type"), VisibleInListView(false)]
         public int QualityType
         {
             get => qualityType;
@@ -50,7 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double criterionGain;
-        [VisibleInListView(false)]
+        [XafDisplayName("Criterion Gain"), VisibleInListView(false)]
         public double CriterionGain
         {
             get => criterionGain;
@@ -58,7 +58,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double precisionValue;
-        [VisibleInListView(false)]
+        [XafDisplayName("Precision Value"), VisibleInListView(false)]
         public double PrecisionValue
         {
             get => precisionValue;
@@ -66,7 +66,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double minValue;
-        [VisibleInListView(false)]
+        [XafDisplayName("Min Value"), VisibleInListView(false)]
         public double MinValue
         {
             get => minValue;
@@ -74,7 +74,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double maxValue;
-        [VisibleInListView(false)]
+        [XafDisplayName("Max Value"), VisibleInListView(false)]
         public double MaxValue
         {
             get => maxValue;
@@ -82,7 +82,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double destMinValue;
-        [VisibleInListView(false)]
+        [XafDisplayName("Dest Min Value"), VisibleInListView(false)]
         public double DestMinValue
         {
             get => destMinValue;
@@ -90,7 +90,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double destMaxValue;
-        [VisibleInListView(false)]
+        [XafDisplayName("Dest Max Value"), VisibleInListView(false)]
         public double DestMaxValue
         {
             get => destMaxValue;
@@ -98,7 +98,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double cycleDifferenceValue;
-        [VisibleInListView(false)]
+        [XafDisplayName("Cycle Difference Value"), VisibleInListView(false)]
         public double CycleDifferenceValue
         {
             get => cycleDifferenceValue;
@@ -106,7 +106,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool cycleWrite;
-        [VisibleInListView(false)]
+        [XafDisplayName("Cycle Write"), VisibleInListView(false)]
         public bool CycleWrite
         {
             get => cycleWrite;
@@ -114,7 +114,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         bool cycleDifference;
-        [VisibleInListView(false)]
+        [XafDisplayName("Cycle Difference"), VisibleInListView(false)]
         public bool CycleDifference
         {
             get => cycleDifference;
@@ -130,7 +130,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string criterionName;
-        [Size(50)]
+        [Size(50), XafDisplayName("Criterion Name")]
         public string CriterionName
         {
             get => criterionName;
@@ -138,7 +138,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string criterionAddress;
-        [Size(50)]
+        [Size(50), XafDisplayName("Criterion Address")]
         public string CriterionAddress
         {
             get => criterionAddress;
@@ -146,7 +146,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string conditionAddress;
-        [Size(50)]
+        [Size(50), XafDisplayName("Condition Address")]
         public string ConditionAddress
         {
             get => conditionAddress;
@@ -154,7 +154,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string criterionType;
-        [Size(50)]
+        [Size(50), XafDisplayName("Criterion Type")]
         public string CriterionType
         {
             get => criterionType;
@@ -162,7 +162,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Machines _Machines;
-        [Association("QualityCriterion-Machines"), ImmediatePostData]
+        [Association("QualityCriterion-Machines"), ImmediatePostData, XafDisplayName("Machine Name")]
         public Machines MachineID
         {
             get => _Machines;

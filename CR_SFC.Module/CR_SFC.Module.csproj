@@ -231,11 +231,11 @@
     <Compile Include="Controllers\MachineController.Designer.cs">
       <DependentUpon>MachineController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ShowSavedMessage.cs">
+    <Compile Include="Controllers\ShowRecordMessage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controllers\ShowSavedMessage.Designer.cs">
-      <DependentUpon>ShowSavedMessage.cs</DependentUpon>
+    <Compile Include="Controllers\ShowRecordMessage.Designer.cs">
+      <DependentUpon>ShowRecordMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="BusinessObjects\ApplicationUser.cs" />

@@ -34,6 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Machines machineID;
+        [XafDisplayName("Machine Name")]
         public Machines MachineID
         {
             get => machineID;
@@ -41,6 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double dataValue;
+        [XafDisplayName("Data Value")]
         public double DataValue
         {
             get => dataValue;
@@ -48,6 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime times;
+        [XafDisplayName("Times")]
         [RuleRequiredField("times1-Required", DefaultContexts.Save, "Lütfen Times Alanını Doldurunuz")]
         public DateTime Times
         {

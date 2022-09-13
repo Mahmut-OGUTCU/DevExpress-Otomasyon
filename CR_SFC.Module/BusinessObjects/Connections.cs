@@ -21,9 +21,7 @@ namespace CR_SFC.Module.BusinessObjects
     [DefaultPropertyAttribute("Name")]
     [RuleCriteria("ThreadSleepTime", DefaultContexts.Save, "ThreadSleepTime != 0", "ThreadSleepTime 0'dan büyük olmalıdır.", SkipNullOrEmptyValues = false)]
     [Appearance("DeviceNameEnable", TargetItems = "DeviceName", Enabled = false)]
-    //[Appearance("PLCTypeEnable", TargetItems = "PLCTypeID", Criteria = "DeviceName != 'SIEMENS'", Enabled = false)]
     [Appearance("Hide", TargetItems = "PLCTypeID, Rack, Slot, Topic", Criteria = "DeviceName != 'SIEMENS'", Context = "Any", Visibility = ViewItemVisibility.Hide)]
-    //[Appearance("FillPLCType", TargetItems = "PLCTypeID", Criteria = "DeviceName = 'SIEMENS'", Context = "Any", Enabled = true)]
     public class Connections : XPBaseObject
     {
         public Connections(Session session) : base(session)
@@ -35,22 +33,22 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         #region ProductNameRelationships
-        ProductNames _ProductNameProductNameID;
-        [NonPersistent, ImmediatePostData, XafDisplayName("Product Name")]
-        public ProductNames ProductNameProductNameID
-        {
-            get
+            ProductNames _ProductNameProductNameID;
+            [NonPersistent, ImmediatePostData, XafDisplayName("Product Name")]
+            public ProductNames ProductNameProductNameID
             {
-                if (_ProductNameProductNameID == null)
-                    return Session.Query<ProductNames>().FirstOrDefault(x => x.ProductName == ProductName);
-                return _ProductNameProductNameID;
+                get
+                {
+                    if (_ProductNameProductNameID == null)
+                        return Session.Query<ProductNames>().FirstOrDefault(x => x.ProductName == ProductName);
+                    return _ProductNameProductNameID;
+                }
+                set
+                {
+                    SetPropertyValue(nameof(ProductNameProductNameID), ref _ProductNameProductNameID, value);
+                    ProductName = ProductNameProductNameID.ProductName;
+                }
             }
-            set
-            {
-                SetPropertyValue(nameof(ProductNameProductNameID), ref _ProductNameProductNameID, value);
-                ProductName = ProductNameProductNameID.ProductName;
-            }
-        }
         #endregion
 
         int id;
@@ -86,11 +84,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int threadSleepTime;
-        //[RuleRequiredField("threadSleepTime-Required", DefaultContexts.Save, "Lütfen Thread Sleep Time Alanını Doldurunuz")]
-        //[RuleValueComparison("threadSleepTime-Required", DefaultContexts.Save, ValueComparisonType.NotEquals, 0, TargetCriteria = "ThreadSleepTime > 0")]
-        //[RuleValueComparison("threadSleepTime-Required", DefaultContexts.Save, ValueComparisonType.GreaterThanOrEqual, 0)]
-        //[RuleRequiredField("SpouseNameIsRequiredWhenMarried", DefaultContexts.Save, "ertretert", TargetCriteria = "ThreadSleepTime > 0")]
-        //[XafDisplayName("Thread Sleep Time (ms)"), VisibleInListView(false)]
+        [XafDisplayName("Thread Sleep Time"), VisibleInListView(false)]
         public int ThreadSleepTime
         {
             get => threadSleepTime;
@@ -98,7 +92,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int rack;
-        [VisibleInListView(false)]
+        [XafDisplayName("Rack"), VisibleInListView(false)]
         public int Rack
         {
             get => rack;
@@ -106,7 +100,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int slot;
-        [VisibleInListView(false)]
+        [XafDisplayName("Slot"), [VisibleInListView(false)]
         public int Slot
         {
             get => slot;
@@ -114,7 +108,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productName;
-        [Size(50), VisibleInListView(false), VisibleInDetailView(false)]
+        [Size(50), XafDisplayName("Product Name"), VisibleInListView(false), VisibleInDetailView(false)]
         public string ProductName
         {
             get => productName;
@@ -122,7 +116,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string productCode;
-        [Size(50), VisibleInListView(false)]
+        [Size(50), XafDisplayName("Product Code"), VisibleInListView(false)]
         public string ProductCode
         {
             get => productCode;
@@ -130,7 +124,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string ipAddress;
-        [Size(15), VisibleInListView(false)]
+        [Size(15), XafDisplayName("IP Address"), VisibleInListView(false)]
         [RuleRequiredField("ipAddress-Required", DefaultContexts.Save, "Lütfen Ip Address Alanını Doldurunuz")]
         public string IpAddress
         {
@@ -140,7 +134,7 @@ namespace CR_SFC.Module.BusinessObjects
 
         string terminalType;
         [RuleRequiredField("TerminalType-Required", DefaultContexts.Save, "Lütfen Terminal Type Alanını Seçiniz")]
-        [Size(50), VisibleInListView(false)]
+        [Size(50), XafDisplayName("Terminal Type"), VisibleInListView(false)]
         [ModelDefault("PredefinedValues", "0;1")]
         public string TerminalType
         {
@@ -149,7 +143,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string communicationAddress;
-        [Size(20), VisibleInListView(false)]
+        [Size(20), XafDisplayName("Communication Address"), VisibleInListView(false)]
         public string CommunicationAddress
         {
             get => communicationAddress;
@@ -157,7 +151,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string deviceName; //ProductNameProductNameID.ProtocolName
-        [Size(50), VisibleInListView(false)]
+        [Size(50), XafDisplayName("Device Name"), VisibleInListView(false)]
         public string DeviceName
         {
             get => deviceName;
@@ -198,7 +192,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string topic;
-        [Size(70), VisibleInListView(false)]
+        [Size(70), XafDisplayName("Topic"), VisibleInListView(false)]
         public string Topic
         {
             get => topic;
@@ -206,7 +200,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string port;
-        [Size(10), VisibleInListView(false)]
+        [Size(10), XafDisplayName("Port"), VisibleInListView(false)]
         public string Port
         {
             get => port;
@@ -214,7 +208,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime serviceCheck;
-        [VisibleInListView(false)]
+        [XafDisplayName("Service Check"), VisibleInListView(false)]
         public DateTime ServiceCheck
         {
             get => serviceCheck;

@@ -34,6 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Machines machineID;
+        [XafDisplayName("Machine Name")]
         public Machines MachineID
         {
             get => machineID;
@@ -41,6 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int reupdate;
+        [XafDisplayName("Reupdate")]
         public int Reupdate
         {
             get => reupdate;
@@ -48,6 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double totalValue;
+        [XafDisplayName("Total Value")]
         public double TotalValue
         {
             get => totalValue;
@@ -55,6 +58,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double currentValue;
+        [XafDisplayName("Current Value")]
         public double CurrentValue
         {
             get => currentValue;
@@ -62,6 +66,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime times;
+        [XafDisplayName("Times")]
         public DateTime Times
         {
             get => times;

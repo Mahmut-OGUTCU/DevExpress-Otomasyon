@@ -26,7 +26,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int oid;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int OID
         {
             get => oid;
@@ -34,6 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Machines machineID;
+        [XafDisplayName("Machine Name")]
         public Machines MachineID
         {
             get => machineID;
@@ -41,6 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DataExplains dataExplainID;
+        [XafDisplayName("Data Explian")]
         public DataExplains DataExplainID
         {
             get => dataExplainID;
@@ -48,6 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double dataValue;
+        [XafDisplayName("Data Value")]
         public double DataValue
         {
             get => dataValue;
@@ -55,6 +58,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         double dataDifferenceValue;
+        [XafDisplayName("Data Difference Value")]
         public double DataDifferenceValue
         {
             get => dataDifferenceValue;
@@ -62,6 +66,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime times;
+        [XafDisplayName("Times")]
         [RuleRequiredField("times2-Required", DefaultContexts.Save, "Lütfen Times Alanını Doldurunuz")]
         public DateTime Times
         {

@@ -61,7 +61,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string building1IpAddress;
-        [Size(15)]
+        [Size(15), XafDisplayName("Building IP Address 1")]
         public string Building1IpAddress
         {
             get => building1IpAddress;
@@ -69,7 +69,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string building2IpAddress;
-        [Size(15)]
+        [Size(15), XafDisplayName("Building IP Address 2")]
         public string Building2IpAddress
         {
             get => building2IpAddress;
@@ -77,7 +77,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string building3IpAddress;
-        [Size(15)]
+        [Size(15), XafDisplayName("Building IP Address 3")]
         public string Building3IpAddress
         {
             get => building3IpAddress;
@@ -85,7 +85,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string building4IpAddress;
-        [Size(15)]
+        [Size(15), , XafDisplayName("Building IP Address 4")]
         public string Building4IpAddress
         {
             get => building4IpAddress;
@@ -101,7 +101,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string buildingNo;
-        [Size(15)]
+        [Size(15), XafDisplayName("Building No")]
         public string BuildingNo
         {
             get => buildingNo;
@@ -109,7 +109,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string printerType;
-        [Size(50)]
+        [Size(50), XafDisplayName("Printer Type")]
         public string PrinterType
         {
             get => printerType;

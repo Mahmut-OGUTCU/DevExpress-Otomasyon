@@ -1,7 +1,7 @@
 ﻿
 namespace CR_SFC.Module.Controllers
 {
-    partial class ShowSavedMessage
+    partial class ShowRecordMessage
     {
         /// <summary>
         /// Required designer variable.

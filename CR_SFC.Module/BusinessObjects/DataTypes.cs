@@ -34,7 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string name;
-        [Size(50)]
+        [Size(50), XafDisplayName("Name")]
         public string Name
         {
             get => name;

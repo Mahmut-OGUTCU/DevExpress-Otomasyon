@@ -1,4 +1,5 @@
-﻿using DevExpress.Data.Filtering;
+﻿using CR_SFC.Module.BusinessObjects;
+using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.ExpressApp.Editors;
@@ -9,6 +10,7 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
+using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,18 +19,19 @@ using System.Text;
 
 namespace CR_SFC.Module.Controllers
 {
-    public partial class ShowSavedMessage : ViewController
+    public partial class ShowRecordMessage : ViewController
     {
-        public ShowSavedMessage()
+        public ShowRecordMessage()
         {
             InitializeComponent();
+            TargetViewNesting = Nesting.Root;
         }
         
         protected override void OnActivated()
         {
             base.OnActivated();
             ObjectSpace.ObjectSaving += ObjectSpace_ObjectSaving;
-            ObjectSpace.ObjectDeleting += ObjectSpace_ObjectDeleting;
+            ObjectSpace.ObjectDeleted += ObjectSpace_ObjectDeleting;
         }
 
         protected override void OnDeactivated()
@@ -39,13 +42,16 @@ namespace CR_SFC.Module.Controllers
         }
         private void ObjectSpace_ObjectDeleting(object sender, ObjectsManipulatingEventArgs e)
         {
-            if (ObjectSpace.IsDeleting)
+            if (e.Objects.Cast<XPBaseObject>().FirstOrDefault().IsDeleted)
                 ShowMessage("Kayıt Silindi !");
         }
 
         private void ObjectSpace_ObjectSaving(object sender, ObjectManipulatingEventArgs e)
         {
-            if (ObjectSpace.IsNewObject(View.CurrentObject))
+
+            var aa = sender;
+
+            if (ObjectSpace.IsNewObject(e.Object))
                 ShowMessage("Kayıt Eklendi !");
             else
                 ShowMessage("Kayıt Güncellendi !");
@@ -53,7 +59,6 @@ namespace CR_SFC.Module.Controllers
 
         private void ShowMessage(string message = "")
         {
-            var aa = View;
             MessageOptions options = new MessageOptions
             {
                 Duration = 2000,

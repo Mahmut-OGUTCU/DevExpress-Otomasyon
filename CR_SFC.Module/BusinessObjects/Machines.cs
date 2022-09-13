@@ -327,7 +327,7 @@ namespace CR_SFC.Module.BusinessObjects
             }
             #endregion
 
-        [DevExpress.Xpo.Aggregated, Association("FastProductions-Machines")]
+        [Association("FastProductions-Machines")]
         public XPCollection<FastProductions> FastProduction
         {
             get { return GetCollection<FastProductions>(nameof(FastProduction)); }

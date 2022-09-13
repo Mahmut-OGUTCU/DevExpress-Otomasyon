@@ -45,7 +45,7 @@ namespace CR_SFC.Module.BusinessObjects
         #endregion
 
         int id;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int ID
         {
             get => id;
@@ -53,7 +53,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int currentValue;
-        [VisibleInListView(false)]
+        [XafDisplayName("Current Value"), VisibleInListView(false)]
         public int CurrentValue
         {
             get => currentValue;
@@ -69,7 +69,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string explain;
-        [Size(20)]
+        [Size(20), XafDisplayName("Explain"), VisibleInListView(false)]
         public string Explain
         {
             get => explain;

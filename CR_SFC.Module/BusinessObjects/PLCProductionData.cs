@@ -34,7 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Machines machineID;
-        [RuleRequiredField("machineID3-Required", DefaultContexts.Save, "Lütfen Machine ID Alanını Doldurunuz")]
+        [XafDisplayName("Machine Name")]
         public Machines MachineID
         {
             get => machineID;
@@ -42,7 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DataTypes dataTypeID;
-        [RuleRequiredField("dataTypeID-Required", DefaultContexts.Save, "Lütfen Data Type ID Alanını Doldurunuz")]
+        [XafDisplayName("Data Type")]
         public DataTypes DataTypeID
         {
             get => dataTypeID;
@@ -50,6 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int dataValue;
+        [XafDisplayName("Data Value")]
         public int DataValue
         {
             get => dataValue;
@@ -57,6 +58,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int counters;
+        [XafDisplayName("Counters")]
         public int Counters
         {
             get => counters;
@@ -64,7 +66,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DataExplains dataExplainID;
-        [RuleRequiredField("dataExplainID1-Required", DefaultContexts.Save, "Lütfen Data Explain ID Alanını Doldurunuz")]
+        [XafDisplayName("Data Explain")]
         public DataExplains DataExplainID
         {
             get => dataExplainID;
@@ -72,6 +74,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int reupdate;
+        [XafDisplayName("Reupdate")]
         public int Reupdate
         {
             get => reupdate;
@@ -79,6 +82,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int workorderID;
+        [XafDisplayName("Work Order")]
         public int WorkorderID
         {
             get => workorderID;
@@ -86,6 +90,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         byte bant_no;
+        [XafDisplayName("Bant No")]
         public byte Bant_no
         {
             get => bant_no;
@@ -93,6 +98,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         Int16 batchNo;
+        [XafDisplayName("Batch No")]
         public Int16 BatchNo
         {
             get => batchNo;
@@ -100,7 +106,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string dataExplainCode;
-        [Size(30)]
+        [Size(30), XafDisplayName("Data Explain Code")]
         public string DataExplainCode
         {
             get => dataExplainCode;
@@ -108,7 +114,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string stockCardCode;
-        [Size(50)]
+        [Size(50), XafDisplayName("Stock Card Code")]
         public string StockCardCode
         {
             get => stockCardCode;
@@ -116,7 +122,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string packageNumber;
-        [Size(50)]
+        [Size(50), XafDisplayName("Package Number")]
         public string PackageNumber
         {
             get => packageNumber;
@@ -124,7 +130,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string packagingFiche;
-        [Size(200)]
+        [Size(200), XafDisplayName("Packaging Fiche")]
         public string PackagingFiche
         {
             get => packagingFiche;
@@ -132,7 +138,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string packagingFiche2;
-        [Size(200)]
+        [Size(200), XafDisplayName("Packaging Fiche 2")]
         public string PackagingFiche2
         {
             get => packagingFiche2;
@@ -140,7 +146,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string serialLotCode;
-        [Size(100)]
+        [Size(100), XafDisplayName("Serial Lot Code")]
         public string SerialLotCode
         {
             get => serialLotCode;
@@ -148,7 +154,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string ficheNo;
-        [Size(50)]
+        [Size(50), XafDisplayName("Fiche No")]
         public string FicheNo
         {
             get => ficheNo;
@@ -156,6 +162,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime productionDate;
+        [XafDisplayName("Production Date")]
         public DateTime ProductionDate
         {
             get => productionDate;
@@ -163,6 +170,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         DateTime expireDate;
+        [XafDisplayName("Expire Date")]
         public DateTime ExpireDate
         {
             get => expireDate;

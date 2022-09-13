@@ -1,4 +1,5 @@
 ﻿using CR_SFC.Module.BusinessObjects;
+using CR_SFC.Module.EnumObjects;
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
@@ -45,11 +46,9 @@ namespace CR_SFC.Module.Controllers
             if (e.PropertyName == "ProductNameProductNameID" && e.NewValue != null)
                 ((Connections)View.CurrentObject).DeviceName = ((Connections)View.CurrentObject).ProductNameProductNameID.ProtocolName;
 
-            //
             if (((Connections)View.CurrentObject).DeviceName?.ToString() != "SIEMENS")
-                ((Connections)View.CurrentObject).PLCTypeID = (EnumObjects.PLCType)0;
+                ((Connections)View.CurrentObject).PLCTypeID = (PLCType)0;
 
-            //
             if ((e.PropertyName == "ProductName" && e.NewValue == null))
                 ((Connections)View.CurrentObject).DeviceName = "Seçiniz";
         }

@@ -26,7 +26,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int id;
-        [Key(AutoGenerate = true)]
+        [Key(AutoGenerate = true), VisibleInDetailView(false), VisibleInListView(false)]
         public int ID
         {
             get => id;
@@ -34,6 +34,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int priority;
+        [XafDisplayName("Priority"), VisibleInListView(false)]
         public int Priority
         {
             get => priority;
@@ -41,6 +42,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int startValue;
+        [XafDisplayName("Start Value"), VisibleInListView(false)]
         public int StartValue
         {
             get => startValue;
@@ -48,6 +50,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int endValue;
+        [XafDisplayName("End Value"), VisibleInListView(false)]
         public int EndValue
         {
             get => endValue;
@@ -55,6 +58,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int waitParam;
+        [XafDisplayName("Wait Param"), VisibleInListView(false)]
         public int WaitParam
         {
             get => waitParam;
@@ -62,7 +66,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string address;
-        [Size(50)]
+        [Size(50), XafDisplayName("Address"), VisibleInListView(false)]
         public string Address
         {
             get => address;
@@ -70,7 +74,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         string explain;
-        [Size(250)]
+        [Size(250), XafDisplayName("Explain"), VisibleInListView(false)]
         public string Explain
         {
             get => explain;

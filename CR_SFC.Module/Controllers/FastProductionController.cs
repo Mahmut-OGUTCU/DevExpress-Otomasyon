@@ -89,7 +89,6 @@ namespace CR_SFC.Module.Controllers
                     fastProduction.ProductionIndex = machineFastProductions.Count();
                 }
             }
-
         }
 
     }
