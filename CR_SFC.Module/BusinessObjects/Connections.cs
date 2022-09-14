@@ -100,7 +100,7 @@ namespace CR_SFC.Module.BusinessObjects
         }
 
         int slot;
-        [XafDisplayName("Slot"), [VisibleInListView(false)]
+        [XafDisplayName("Slot"), VisibleInListView(false)]
         public int Slot
         {
             get => slot;
